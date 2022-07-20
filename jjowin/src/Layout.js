@@ -71,7 +71,7 @@ const Layout = () => {
             </Link>
         </div>
         <div className='login'>
-            <a href="./login"><button>로그인</button></a>
+            <a href="../login"><button>로그인</button></a>
         </div>
       </Header>
       <main>
