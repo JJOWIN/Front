@@ -28,7 +28,7 @@ const Header = styled.header`
     }
     button{
         background-color:white;
-        margin-top:2vh;
+        margin-top:1vh;
         width:5vw;
         height:4vh;
         border-radius:10px;
@@ -41,6 +41,7 @@ const Header = styled.header`
     a{
         text-decoration:none;
         width:25%;
+        margin-bottom: 1vh;
         margin-top:2.5vh;
         color:black;
     }

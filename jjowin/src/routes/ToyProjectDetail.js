@@ -15,7 +15,7 @@ const Container1 = styled.div`
         margin-left: 2vw;
         white-space: pre-wrap;
     }
-`;
+`;  
 const Teamcollect = styled.div`
     display: flex;
     padding: 1vw;
@@ -155,9 +155,7 @@ function ToyProjectDetail(){
         return(
             <Teamcollect>
                 <div className='icon'>
-                    <div style={{width:"100px",height:"100px",backgroundColor:"darkgray",borderRadius:"50%"}}> 
-                    
-                    </div>
+                    <div style={{width:"100px",height:"100px",backgroundColor:"darkgray",borderRadius:"50%"}}>  </div>
                 </div>
                 <h3 className='role'>{item.role}</h3>
                 <h3 className='people'>{item.nowPeople}/{item.maxPeople}</h3>

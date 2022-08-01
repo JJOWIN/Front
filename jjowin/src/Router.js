@@ -19,7 +19,7 @@ function Router(){
             <Route path="/login" element={<Login/>}></Route>
             <Route path="/signUp" element={<SignUp/>}></Route>
             <Route path="/toyprojectList/toyProjectDetail" element={<ToyProjectDetail/>}></Route>
-            <Route path="/contest/:contest_num" element={<ContestDetail/>}></Route>
+            <Route path="/contestList/contestDetail" element={<ContestDetail/>}></Route>
             </Route>
         </Routes>
     </BrowserRouter>
