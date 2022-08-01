@@ -6,6 +6,7 @@ import Login from "./routes/Login";
 import ContestList from "./routes/ContestList";
 import ToyProject from "./routes/ToyProject";
 import ToyProjectDetail from "./routes/ToyProjectDetail";
+import CreateToyProject from "./routes/CreateToyProject";
 import SignUp from "./routes/SignUp";
 
 function Router(){
@@ -20,6 +21,7 @@ function Router(){
             <Route path="/signUp" element={<SignUp/>}></Route>
             <Route path="/toyprojectList/toyProjectDetail" element={<ToyProjectDetail/>}></Route>
             <Route path="/contestList/contestDetail" element={<ContestDetail/>}></Route>
+            <Route path="/toyprrojectList/createeToyProject" element={<CreateToyProject/>}></Route>
             </Route>
         </Routes>
     </BrowserRouter>
