@@ -75,9 +75,9 @@ function Login(){
               <a href="/"><Button>로그인</Button></a>
             </Contianer2>
             <Container3>
-                <Link to="./findId">ID 찾기</Link>
-                <Link to="./findPw">PW 찾기</Link>
-                <Link to="./signUp">회원가입</Link>
+                <Link to="../findId">ID 찾기</Link>
+                <Link to="../findPw">PW 찾기</Link>
+                <Link to="../signUp">회원가입</Link>
             </Container3>
         </Container>
         <Wraps style={{marginRight:"-9px"}}> 
