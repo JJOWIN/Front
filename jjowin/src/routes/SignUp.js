@@ -85,7 +85,7 @@ function SignUp(){
     const [email,setEmail]=useState();
     const [emailCheck,setEmailCheck]=useState();
     const [role,setRole]=useState();
-    const [skill,setSkill]=useState();
+    const [skill,setSkill]=useState(['']);
     
     const OPTIONS = [
         { value: "developer", name: "개발자" },
@@ -174,6 +174,18 @@ function SignUp(){
     const handleChangeEmail=(e)=>{
         setEmail(e.target.value);
     }
+    // 토이프로젝트 스킬 입력 시
+    const onSkillHandler = (event) => {
+        let tmp = [...skill]
+        tmp[Number(event.target.id)] = event.target.value
+        setSkill([...tmp])
+        // console.log(toyProjectSkills)
+
+    }
+    // 토이프로젝트 스킬 추가 버튼 클릭 시
+    const onClickAddSkillsHandler = () => {
+        setSkill([...skill, ''])
+    }
     
     return(
         <HTMLS>
@@ -246,6 +258,13 @@ function SignUp(){
 
             <Contianer2>
                 <h3>스킬</h3>
+                {skill.map((item, index) => (
+                    <div>
+                        <label>#</label>
+                        <input id={index} value={item} onChange={onSkillHandler} />
+                    </div>
+                ))}
+                <button type="button" onClick={onClickAddSkillsHandler}>+</button>
             </Contianer2>
 
             <Contianer2>
