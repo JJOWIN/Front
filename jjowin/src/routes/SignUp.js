@@ -38,7 +38,6 @@ const ID = styled.input`
     border-radius: 5px;
     border: 1px solid darkgray;
 `;
-
 const Select = styled.select`
     margin: 0;
 	min-width: 0;
@@ -86,7 +85,7 @@ function SignUp(){
     const [emailCheck,setEmailCheck]=useState();
     const [role,setRole]=useState();
     const [skill,setSkill]=useState();
-    
+
     const OPTIONS = [
         { value: "developer", name: "개발자" },
         { value: "designer", name: "UI/UX 디자이너" },
@@ -107,11 +106,9 @@ function SignUp(){
                             {option.name}
                         </option>
                     ))}
-                </Select>
-                
+                </Select>  
             );
         };
-
   
     const ClickOrigin=(index)=>{
         console.log(skillOrigin)
