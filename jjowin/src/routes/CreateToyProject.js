@@ -76,7 +76,7 @@ function CreateToyProject() {
         setToyProjectContent(event.currentTarget.value)
     }
 
-    // 토이프로젝트 직무 입력 시
+    // 토이프로젝트 스킬 입력 시
     const onToyProjectSkillsHandler = (event) => {
         let tmp = [...toyProjectSkills]
         tmp[Number(event.target.id)] = event.target.value
@@ -145,7 +145,7 @@ function CreateToyProject() {
                 <p>모집 스킬</p>
                 {toyProjectSkills.map((item, index) => (
                     <div>
-                        <label htmlFor={index}>#</label>
+                        <label>#</label>
                         <input id={index} value={item} onChange={onToyProjectSkillsHandler} />
                     </div>
                 ))}

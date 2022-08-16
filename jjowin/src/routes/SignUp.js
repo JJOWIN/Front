@@ -1,6 +1,8 @@
 import {Link} from "react-router-dom"
 import styled from "styled-components";
 import { useEffect, useState } from "react";
+import {useQuery} from "react-query";
+
 const Container = styled.div`
     width:40%;
     height:100%;
@@ -76,16 +78,16 @@ function SignUp(){
     const [skillOrigin,setSkillOrigin] = useState([1,2,3,4,5]);
     const [skillNew,setSkillNew] = useState([]);
     const [agree,setAgree]=useState([0,0,0]);
-    const [id,setId]=useState();
-    const [checkId,setCheckId]=useState();
-    const [pw,setPw]=useState();
-    const [checkPw,setCheckPw]=useState();
-    const [name,setName]=useState();
-    const [email,setEmail]=useState();
-    const [emailCheck,setEmailCheck]=useState();
-    const [role,setRole]=useState();
-    const [skill,setSkill]=useState();
-
+    const [id,setId]=useState(0);
+    const [checkId,setCheckId]=useState(0);
+    const [pw,setPw]=useState(0);
+    const [checkPw,setCheckPw]=useState(0);
+    const [name,setName]=useState(0);
+    const [email,setEmail]=useState(0);
+    const [emailCheck,setEmailCheck]=useState(0);
+    const [role,setRole]=useState(0);
+    const [skill,setSkill]=useState(['']);
+    const [pwSame,setPwSame]=useState(0);
     const OPTIONS = [
         { value: "developer", name: "개발자" },
         { value: "designer", name: "UI/UX 디자이너" },
@@ -130,7 +132,7 @@ function SignUp(){
             setAgree([1,...agree])
         }   
         }
-    
+
     const Check2=()=>{
         if(agree[1]){
             let first=agree[0];
@@ -154,7 +156,7 @@ function SignUp(){
         }
     }
     const ButtonClick=()=>{
-        console.log(id,pw,checkPw,name,email,role)
+        console.log(id,pw,name,email,role,skill,agree,pwSame)
     }
     const handleChangeId=(e)=>{
         setId(e.target.value);
@@ -163,13 +165,36 @@ function SignUp(){
         setPw(e.target.value);
     }
     const handleChangePwCheck=(e)=>{
-        setCheckPw(e.target.value);
+        if(pw===e.target.value)setPwSame(1);
+        else setPwSame(0);
     }
     const handleChangeName=(e)=>{
         setName(e.target.value);
     }
     const handleChangeEmail=(e)=>{
         setEmail(e.target.value);
+    }
+    const SameCheck =()=>{
+        let new_id="nakhyeon";
+        if(id===new_id){
+            alert("중복된 아이디입니다.");
+        }
+        else {
+            alert("사용가능한 아이디입니다.");
+            setCheckId(1);
+        }
+    }
+    // 토이프로젝트 스킬 입력 시
+    const onSkillHandler = (event) => {
+        let tmp = [...skill]
+        tmp[Number(event.target.id)] = event.target.value
+        setSkill([...tmp])
+        // console.log(toyProjectSkills)
+
+    }
+    // 토이프로젝트 스킬 추가 버튼 클릭 시
+    const onClickAddSkillsHandler = () => {
+        setSkill([...skill, ''])
     }
     
     return(
@@ -184,8 +209,8 @@ function SignUp(){
            <Contianer2>
               <h3>ID</h3>
               <div style={{display:"flex"}}>
-              <ID placeholder="ID" onChange={handleChangeId} />
-              <Button>중복확인</Button>
+              <ID placeholder="ID" onChange={handleChangeId}/>
+              <Button onClick={SameCheck}>중복확인</Button>
               </div>
           </Contianer2>
 
@@ -197,8 +222,9 @@ function SignUp(){
             <Contianer2>
               <h3>PW확인</h3>
               <ID placeholder="PW확인" onChange={handleChangePwCheck}/>
-              <h5 style={{color:"green"}}>일치</h5>
-              <h5 style={{color:"red"}}>불일치</h5>
+              {pwSame===1?<h5 style={{color:"green"}}>일치</h5>: <h5 style={{color:"red"}}>불일치</h5>}
+             
+             
             </Contianer2>
 
              <Contianer2>
@@ -243,6 +269,13 @@ function SignUp(){
 
             <Contianer2>
                 <h3>스킬</h3>
+                {skill.map((item, index) => (
+                    <div>
+                        <label>#</label>
+                        <input id={index} value={item} onChange={onSkillHandler} />
+                    </div>
+                ))}
+                <button type="button" onClick={onClickAddSkillsHandler}>+</button>
             </Contianer2>
 
             <Contianer2>
