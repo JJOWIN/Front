@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
-    background-color: blue;
+    background-color: yellow;
     width:50%;
     height:1000vh;
 `

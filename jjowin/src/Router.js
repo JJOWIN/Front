@@ -9,8 +9,11 @@ import ToyProjectDetail from "./routes/ToyProjectDetail";
 import CreateToyProject from "./routes/CreateToyProject";
 import SignUp from "./routes/SignUp";
 import MyPage from "./MyPage";
-import MyPageInfoFix from "./routes/MyPageInfoFix";
-import MyPageSelect from "./routes/MyPageSelect";
+import MyPageInfoFix from "./routes/MyPage/MyPageInfoFix";
+import MyPageSelect from "./routes/MyPage/MyPageSelect";
+import MyPageSetting from "./routes/MyPage/MyPageSetting";
+import MyPageJoinProject from "./routes/MyPage/MyPageJoinProject";
+import MyPageComment from "./routes/MyPage/MyPageComment";
 
 function Router(){
     return (
@@ -27,7 +30,10 @@ function Router(){
                 <Route path="/toyprrojectList/createeToyProject" element={<CreateToyProject/>}></Route>
                 <Route path="/myPage" element={<MyPage/>}>
                     <Route path="/myPage/myPageInfoFix" element={<MyPageInfoFix/>}></Route>
-                    <Route path="/myPage/mypageSelect" element={<MyPageSelect/>}></Route>
+                    <Route path="/myPage/myPageSelect" element={<MyPageSelect/>}></Route>
+                    <Route path="/myPage/myPageSetting" element={<MyPageSetting/>}></Route>
+                    <Route path="/myPage/myPageJoinProject" element={<MyPageJoinProject/>}></Route>
+                    <Route path="/myPage/myPageComment" element={<MyPageComment/>}></Route>
                 </Route>
             </Route>
         </Routes>
