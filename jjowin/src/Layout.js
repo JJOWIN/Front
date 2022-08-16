@@ -71,6 +71,9 @@ const Layout = () => {
             <h2>토이프로젝트</h2>
             </Link>
         </div>
+        <div className='mypage'>
+            <a href="../myPage"><button>마이페이지</button></a>
+        </div>
         <div className='login'>
             <a href="../login"><button>로그인</button></a>
         </div>

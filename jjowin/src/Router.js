@@ -8,20 +8,27 @@ import ToyProject from "./routes/ToyProject";
 import ToyProjectDetail from "./routes/ToyProjectDetail";
 import CreateToyProject from "./routes/CreateToyProject";
 import SignUp from "./routes/SignUp";
+import MyPage from "./MyPage";
+import MyPageInfoFix from "./routes/MyPageInfoFix";
+import MyPageSelect from "./routes/MyPageSelect";
 
 function Router(){
     return (
     <BrowserRouter>
         <Routes>
             <Route element={<Layout />}>
-            <Route path="/" element={<Main/>}></Route>
-            <Route path="/contestList" element={<ContestList/>}></Route>
-            <Route path="/toyprojectList" element={<ToyProject/>}></Route>
-            <Route path="/login" element={<Login/>}></Route>
-            <Route path="/signUp" element={<SignUp/>}></Route>
-            <Route path="/toyprojectList/toyProjectDetail" element={<ToyProjectDetail/>}></Route>
-            <Route path="/contestList/contestDetail" element={<ContestDetail/>}></Route>
-            <Route path="/toyprrojectList/createeToyProject" element={<CreateToyProject/>}></Route>
+                <Route path="/" element={<Main/>}></Route>
+                <Route path="/contestList" element={<ContestList/>}></Route>
+                <Route path="/toyprojectList" element={<ToyProject/>}></Route>
+                <Route path="/login" element={<Login/>}></Route>
+                <Route path="/signUp" element={<SignUp/>}></Route>
+                <Route path="/toyprojectList/toyProjectDetail" element={<ToyProjectDetail/>}></Route>
+                <Route path="/contestList/contestDetail" element={<ContestDetail/>}></Route>
+                <Route path="/toyprrojectList/createeToyProject" element={<CreateToyProject/>}></Route>
+                <Route path="/myPage" element={<MyPage/>}>
+                    <Route path="/myPage/myPageInfoFix" element={<MyPageInfoFix/>}></Route>
+                    <Route path="/myPage/mypageSelect" element={<MyPageSelect/>}></Route>
+                </Route>
             </Route>
         </Routes>
     </BrowserRouter>
