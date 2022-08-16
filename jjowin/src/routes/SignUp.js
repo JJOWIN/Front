@@ -97,11 +97,12 @@ function SignUp(){
                console.log(e.target.value)
             };
             return (
-                <Select onChange={handleChange}>
+                <Select onChange={handleChange} value={role}>
                     {props.options.map((option) => (
                         <option
                             key={option.value}
                             value={option.value}
+                            // defaultValue={props.defaultValue === option.value}
                         >
                             {option.name}
                         </option>
