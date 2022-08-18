@@ -27,7 +27,7 @@ function Router(){
                 <Route path="/signUp" element={<SignUp/>}></Route>
                 <Route path="/toyprojectList/toyProjectDetail" element={<ToyProjectDetail/>}></Route>
                 <Route path="/contestList/contestDetail" element={<ContestDetail/>}></Route>
-                <Route path="/toyprrojectList/createeToyProject" element={<CreateToyProject/>}></Route>
+                <Route path="/toyprojectList/createToyProject" element={<CreateToyProject/>}></Route>
                 <Route path="/myPage" element={<MyPage/>}>
                     <Route path="/myPage/myPageInfoFix" element={<MyPageInfoFix/>}></Route>
                     <Route path="/myPage/myPageSelect" element={<MyPageSelect/>}></Route>
