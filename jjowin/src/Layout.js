@@ -48,7 +48,7 @@ const Header = styled.header`
     div.login{
         justify-content: right;
         text-align: right;
-        margin-top:1vh;
+        margin-top:2vh;
     }
 `;
 
@@ -72,7 +72,7 @@ const Layout = () => {
             </Link>
         </div>
         <div className='mypage'>
-            <a href="../myPage"><button>마이페이지</button></a>
+            <a href="../myPage/myPageInfoFix"><h2>㉾</h2></a>
         </div>
         <div className='login'>
             <a href="../login"><button>로그인</button></a>
