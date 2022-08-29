@@ -2,6 +2,7 @@ import {Link} from "react-router-dom"
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useMutation } from "react-query";
+
 const Container = styled.div`
     width:40%;
     height:100%;
@@ -98,7 +99,7 @@ function SignUp(){
     //   });
     const [proficiency, setProficiency] = useState(new Array(5).fill(false))
     const [agree,setAgree]=useState([0,0,0]);
-    const [id,setId]=useState(0);
+    const [nickname,setNickname]=useState(0);
     const [checkId,setCheckId]=useState(0);
     const [pw,setPw]=useState(0);
     const [checkPw,setCheckPw]=useState(0);
@@ -106,17 +107,35 @@ function SignUp(){
     const [email,setEmail]=useState(0);
     const [emailCheck,setEmailCheck]=useState(0);
     const [role,setRole]=useState(0);
-    const [skill,setSkill]=useState(['']);
+    const [skill,setSkill]=useState([{name:'', skillProficiency:0}]);
     const [pwSame,setPwSame]=useState(0);
     const OPTIONS = [
         { value: "developer", name: "개발자" },
         { value: "designer", name: "UI/UX 디자이너" },
         { value: "orange", name: "개발자2" },
     ];
+    const OPTIONS2 = [
+        { value: 3, name: "상" },
+        { value: 2, name: "중" },
+        { value: 1, name: "하" },
+    ];
+    const Body = {
+		"name": "유저 이름",
+		"nickname": "닉네임",
+		"email": "이메일",
+		"password": "비밀번호",
+		"job": "직무",
+		"jobLevel": 1,
+		"selfIntro": "자기 소개",
+		"userSkills": [
+			{"name": "스킬 이름"},
+		]
+		
+}
         const SelectBox = (props) => {
             const handleChange = (e) => {
                setRole(e.target.value);
-               console.log(e.target.value)
+               console.log(role)
             };
             return (
                 <Select onChange={handleChange} value={role}>
@@ -132,8 +151,28 @@ function SignUp(){
                 </Select>  
             );
         };
+        const SelectBox2 = (props) => {
+            const handleChange = (e) => {
+                let tmp = [...skill]
+               tmp[props.index].skillProficiency = e.target.value
+               setSkill([...tmp])
+               console.log(tmp)
+            };
+            return (
+                <Select onChange={handleChange} value={skill[props.index].skillProficiency}>
+                    {props.options.map((option) => (
+                        <option
+                            key={option.value}
+                            value={option.value}
+                            // defaultValue={props.defaultValue === option.value}
+                        >
+                            {option.name}
+                        </option>
+                    ))}
+                </Select>  
+            );
+        };
   
-
         const ClickProficiency = (index) => {
             let tmp = proficiency.map((e, i) => {
                 if (i <= index.index) return true
@@ -175,8 +214,9 @@ function SignUp(){
             setAgree([...agree,1])
         }
     }
+    
     const ButtonClick=()=>{
-        console.log(id,pw,name,email,role,skill,agree,pwSame)
+        console.log(nickname,pw,name,email,role,skill,agree,pwSame)
         // mutate(
         //     {
         //         "name": "유저 이름",
@@ -191,10 +231,9 @@ function SignUp(){
         //         ] 
         // }
         // )
+
     }
-    const handleChangeId=(e)=>{
-        setId(e.target.value);
-    }
+
     const handleChangePw=(e)=>{
         setPw(e.target.value);
     }
@@ -205,34 +244,31 @@ function SignUp(){
     const handleChangeName=(e)=>{
         setName(e.target.value);
     }
+    const handleChangeNickName=(e)=>{
+        setNickname(e.target.value);
+    }
     const handleChangeEmail=(e)=>{
         setEmail(e.target.value);
     }
-    const SameCheck =()=>{
-        let new_id="nakhyeon";
-        if(id===new_id){
-            alert("중복된 아이디입니다.");
-        }
-        else {
-            alert("사용가능한 아이디입니다.");
-            setCheckId(1);
-        }
-    }
+
 
     
     // 토이프로젝트 스킬 입력 시
-    const onSkillHandler = (event) => {
+    const onSkillHandler = (event, index) => {
         let tmp = [...skill]
-        tmp[Number(event.target.id)] = event.target.value
+        tmp[index].name = event.target.value
         setSkill([...tmp])
-        // console.log(toyProjectSkills)
-
     }
     // 토이프로젝트 스킬 추가 버튼 클릭 시
     const onClickAddSkillsHandler = () => {
-        setSkill([...skill, ''])
+        setSkill([...skill, {name:'', skillProficiency:0}])
     }
-    
+    // 토이프로젝트 스킬 삭제 버튼 클릭 시
+    const onClickDeleteSkillsHandler = (index) => {
+        let tmp = [...skill]
+        tmp.splice(index, 1)
+        setSkill([...tmp])
+    }
     return(
         <HTMLS>
         <Wraps style={{marginLeft:"-9px"}}>
@@ -242,13 +278,14 @@ function SignUp(){
                 <div style={{width:"100px",height:"100px",backgroundColor:"#AD9AEE",borderRadius:"50%",margin:0}}></div>
             </Container1>
 
-           <Contianer2>
-              <h3>ID</h3>
-              <div style={{display:"flex"}}>
-              <ID placeholder="ID" onChange={handleChangeId}/>
-              <Button onClick={SameCheck}>중복확인</Button>
-              </div>
-          </Contianer2>
+            < Contianer2>
+                <h3>본인인증(선택)</h3>
+                <div style={{display:"flex"}}>
+                <ID placeholder="이메일 입력" onChange={handleChangeEmail}/>
+                <Button>인증받기</Button>
+                </div>
+                <ID style={{marginTop:"1vh"}}placeholder="인증번호 입력" />
+            </Contianer2>
 
              <Contianer2>
                 <h3>PW</h3>
@@ -268,14 +305,12 @@ function SignUp(){
                 <ID placeholder="이름" onChange={handleChangeName}/>
             </Contianer2>
 
-            < Contianer2>
-                <h3>본인인증(선택)</h3>
-                <div style={{display:"flex"}}>
-                <ID placeholder="이메일 입력" onChange={handleChangeEmail}/>
-                <Button>인증받기</Button>
-                </div>
-                <ID style={{marginTop:"1vh"}}placeholder="인증번호 입력" />
+            <Contianer2>
+                <h3>닉네임</h3>
+                <ID placeholder="닉네임" onChange={handleChangeNickName}/>
             </Contianer2>
+
+          
 
             <Contianer2>
                 <h3>직무</h3>
@@ -311,7 +346,9 @@ function SignUp(){
                 {skill.map((item, index) => (
                     <div>
                         <label>#</label>
-                        <input id={index} value={item} onChange={onSkillHandler} />
+                        <input id={index} value={item.name} onChange={(event)=>onSkillHandler(event, index)} />
+                        <SelectBox2 options={OPTIONS2} defaultValue={3} index={index}></SelectBox2>
+                        <button type="button" onClick={() => { onClickDeleteSkillsHandler(index) }}>x</button>
                     </div>
                 ))}
                 <button type="button" onClick={onClickAddSkillsHandler}>+</button>
