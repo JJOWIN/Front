@@ -1,5 +1,6 @@
 import {Link} from "react-router-dom"
 import styled from "styled-components";
+import {QueryClient, QueryClientProvider} from "react-query";
 const Container = styled.div`
     width:40%;
     height:100%;

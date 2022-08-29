@@ -1,6 +1,8 @@
 import {Link} from "react-router-dom"
 import styled from "styled-components";
 import { useEffect, useState } from "react";
+import { useMutation } from 'react-query';
+import axios from "axios";
 
 const Container = styled.div`
     width:40%;
@@ -91,10 +93,23 @@ function SignUp(){
         { value: "designer", name: "UI/UX 디자이너" },
         { value: "orange", name: "개발자2" },
     ];
+    const Body = {
+		"name": "유저 이름",
+		"nickname": "닉네임",
+		"email": "이메일",
+		"password": "비밀번호",
+		"job": "직무",
+		"jobLevel": 1,
+		"selfIntro": "자기 소개",
+		"userSkills": [
+			{"name": "스킬 이름"},
+		]
+		
+}
         const SelectBox = (props) => {
             const handleChange = (e) => {
                setRole(e.target.value);
-               console.log(e.target.value)
+               console.log(role)
             };
             return (
                 <Select onChange={handleChange} value={role}>
@@ -111,7 +126,6 @@ function SignUp(){
             );
         };
   
-
         const ClickProficiency = (index) => {
             let tmp = proficiency.map((e, i) => {
                 if (i <= index.index) return true
@@ -153,8 +167,16 @@ function SignUp(){
             setAgree([...agree,1])
         }
     }
+    
     const ButtonClick=()=>{
-        console.log(id,pw,name,email,role,skill,agree,pwSame)
+        fetch('http://43.200.200.255:8080/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(Body)
+          })
+          .then(response=>console.log(response))
     }
     const handleChangeId=(e)=>{
         setId(e.target.value);
@@ -204,13 +226,14 @@ function SignUp(){
                 <div style={{width:"100px",height:"100px",backgroundColor:"#AD9AEE",borderRadius:"50%",margin:0}}></div>
             </Container1>
 
-           <Contianer2>
-              <h3>ID</h3>
-              <div style={{display:"flex"}}>
-              <ID placeholder="ID" onChange={handleChangeId}/>
-              <Button onClick={SameCheck}>중복확인</Button>
-              </div>
-          </Contianer2>
+            < Contianer2>
+                <h3>본인인증(선택)</h3>
+                <div style={{display:"flex"}}>
+                <ID placeholder="이메일 입력" onChange={handleChangeEmail}/>
+                <Button>인증받기</Button>
+                </div>
+                <ID style={{marginTop:"1vh"}}placeholder="인증번호 입력" />
+            </Contianer2>
 
              <Contianer2>
                 <h3>PW</h3>
@@ -230,14 +253,7 @@ function SignUp(){
                 <ID placeholder="이름" onChange={handleChangeName}/>
             </Contianer2>
 
-            < Contianer2>
-                <h3>본인인증(선택)</h3>
-                <div style={{display:"flex"}}>
-                <ID placeholder="이메일 입력" onChange={handleChangeEmail}/>
-                <Button>인증받기</Button>
-                </div>
-                <ID style={{marginTop:"1vh"}}placeholder="인증번호 입력" />
-            </Contianer2>
+          
 
             <Contianer2>
                 <h3>직무</h3>
