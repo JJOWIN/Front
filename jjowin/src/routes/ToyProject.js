@@ -107,6 +107,7 @@ function ToyProject(){
         <div style={{display:"flex",marginLeft:"7vw",marginTop:"3vh"}}>
         <h5>검색창:</h5>
         <Input onChange={Change}></Input>
+        <a href="../toyprojectList/createToyProject"><button>프로젝트 생성</button></a>
         </div>
         <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center",textAlign:"center",paddingRight:"4vw"}}>
         {search.map((item)=>{
