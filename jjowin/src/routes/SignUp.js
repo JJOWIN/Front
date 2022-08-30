@@ -169,14 +169,15 @@ function SignUp(){
     }
     
     const ButtonClick=()=>{
-        fetch('http://43.200.200.255:8080/users', {
+        fetch('http://43.200.200.255:8080/user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(Body)
           })
-          .then(response=>console.log(response))
+          .then(response=>console.log(response.json().then(data=>console.log(data.resultCode))))
+          
     }
     const handleChangeId=(e)=>{
         setId(e.target.value);

@@ -74,17 +74,12 @@ function MyPageInfoFix(){
             </EmailAgree>  
             <ProofSelf>
                {proof?
-                    <h3>본인인증 (O)</h3>
+                    <h3>휴대폰 본인인증 (O)</h3>
                    :
                    <div>
-                   <h3>본인인증 (x)</h3>
-                   <div style={{display:"flex"}}>
-                   <input placeholder="이메일 입력"></input>
+                   <h3>휴대폰 본인인증 (x)</h3>
                    <button>인증받기</button>
-                   </div>
-                   <div>
-                   <input style={{marginTop:"1vh"}}placeholder="인증번호 입력" />
-                   </div>
+                  
                    </div> 
             }
             </ProofSelf>
