@@ -75,28 +75,28 @@ const Span = styled.span`
 `;
 
 function SignUp(){
-    // const postdata = async (data) => {
-    //   fetch(`http://43.200.200.255:8080/users`, {
-    //     method: "post",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    //   })
-    //     .then((response) => response.json())
-    //     .then((data) => console.log(data));
-    // }
-    // const { mutate, isLoading } = useMutation(postdata, {
-    //     onSuccess: data => {
-    //       console.log(data);
-    //       const message = "success"
-    //       alert(message)
-    //     },
-    //     onError: () => {
-    //       alert("there was an error")
-    //     },
+    const postdata = async (data) => {
+      fetch("http://43.200.200.255:8080/user", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+    }
+    const { mutate, isLoading } = useMutation(postdata, {
+        onSuccess: data => {
+          console.log(data);
+          const message = "success"
+          alert(message)
+        },
+        onError: () => {
+          alert("there was an error")
+        },
 
-    //   });
+      });
     const [proficiency, setProficiency] = useState(new Array(5).fill(false))
     const [agree,setAgree]=useState([0,0,0]);
     const [nickname,setNickname]=useState(0);
@@ -217,20 +217,25 @@ function SignUp(){
     
     const ButtonClick=()=>{
         console.log(nickname,pw,name,email,role,skill,agree,pwSame)
-        // mutate(
-        //     {
-        //         "name": "유저 이름",
-        //         "nickname": "닉네임",
-        //         "email": "이메일",
-        //         "password": "비밀번호",
-        //         "job": "직무",
-        //         "jobLevel": 1,
-        //         "selfIntro": "자기 소개",
-        //         "userSkills": [
-        //             {"name": "스킬 이름"},
-        //         ] 
-        // }
-        // )
+        mutate(
+            {
+                "name": "유저 이름",
+                "nickname": "닉네임",
+                "email": "이메일",
+                "password": "비밀번호",
+                "job": "직무",
+                "jobLevel": 1,
+                "selfIntro": "자기 소개",
+                "isReceiveMail": true,
+                "userSkills": [
+                    {
+                            "name": "스킬 이름",
+                            "level" : 1
+                    },
+                ]
+                
+        }
+        )
 
     }
 
