@@ -120,10 +120,10 @@ function SignUp(){
         { value: 1, name: "하" },
     ];
     const Body = {
-		"name": "유저 이름",
-		"nickname": "닉네임",
-		"email": "이메일",
-		"password": "비밀번호",
+		"name": "쪼인",
+		"nickname": "쪼인",
+		"email": "jjowin23@gmail.com",
+		"password": "whdls23@",
 		"job": "직무",
 		"jobLevel": 1,
 		"selfIntro": "자기 소개",
@@ -219,10 +219,10 @@ function SignUp(){
         console.log(nickname,pw,name,email,role,skill,agree,pwSame)
         mutate(
             {
-                "name": "유저 이름",
-                "nickname": "닉네임",
-                "email": "이메일",
-                "password": "비밀번호",
+                "name": "쪼인",
+                "nickname": "쪼인",
+                "email": "jjowin23@gmail.com",
+                "password": "whdls23@",
                 "job": "직무",
                 "jobLevel": 1,
                 "selfIntro": "자기 소개",
