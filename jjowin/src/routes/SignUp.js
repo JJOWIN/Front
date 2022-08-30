@@ -1,8 +1,7 @@
 import {Link} from "react-router-dom"
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { useMutation } from 'react-query';
-import axios from "axios";
+import { useMutation } from "react-query";
 
 const Container = styled.div`
     width:40%;
@@ -76,9 +75,31 @@ const Span = styled.span`
 `;
 
 function SignUp(){
+    // const postdata = async (data) => {
+    //   fetch(`http://43.200.200.255:8080/users`, {
+    //     method: "post",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   })
+    //     .then((response) => response.json())
+    //     .then((data) => console.log(data));
+    // }
+    // const { mutate, isLoading } = useMutation(postdata, {
+    //     onSuccess: data => {
+    //       console.log(data);
+    //       const message = "success"
+    //       alert(message)
+    //     },
+    //     onError: () => {
+    //       alert("there was an error")
+    //     },
+
+    //   });
     const [proficiency, setProficiency] = useState(new Array(5).fill(false))
     const [agree,setAgree]=useState([0,0,0]);
-    const [id,setId]=useState(0);
+    const [nickname,setNickname]=useState(0);
     const [checkId,setCheckId]=useState(0);
     const [pw,setPw]=useState(0);
     const [checkPw,setCheckPw]=useState(0);
@@ -86,12 +107,17 @@ function SignUp(){
     const [email,setEmail]=useState(0);
     const [emailCheck,setEmailCheck]=useState(0);
     const [role,setRole]=useState(0);
-    const [skill,setSkill]=useState(['']);
+    const [skill,setSkill]=useState([{name:'', skillProficiency:0}]);
     const [pwSame,setPwSame]=useState(0);
     const OPTIONS = [
         { value: "developer", name: "개발자" },
         { value: "designer", name: "UI/UX 디자이너" },
         { value: "orange", name: "개발자2" },
+    ];
+    const OPTIONS2 = [
+        { value: 3, name: "상" },
+        { value: 2, name: "중" },
+        { value: 1, name: "하" },
     ];
     const Body = {
 		"name": "유저 이름",
@@ -113,6 +139,27 @@ function SignUp(){
             };
             return (
                 <Select onChange={handleChange} value={role}>
+                    {props.options.map((option) => (
+                        <option
+                            key={option.value}
+                            value={option.value}
+                            // defaultValue={props.defaultValue === option.value}
+                        >
+                            {option.name}
+                        </option>
+                    ))}
+                </Select>  
+            );
+        };
+        const SelectBox2 = (props) => {
+            const handleChange = (e) => {
+                let tmp = [...skill]
+               tmp[props.index].skillProficiency = e.target.value
+               setSkill([...tmp])
+               console.log(tmp)
+            };
+            return (
+                <Select onChange={handleChange} value={skill[props.index].skillProficiency}>
                     {props.options.map((option) => (
                         <option
                             key={option.value}
@@ -179,9 +226,8 @@ function SignUp(){
           .then(response=>console.log(response.json().then(data=>console.log(data.resultCode))))
           
     }
-    const handleChangeId=(e)=>{
-        setId(e.target.value);
-    }
+    
+
     const handleChangePw=(e)=>{
         setPw(e.target.value);
     }
@@ -192,32 +238,31 @@ function SignUp(){
     const handleChangeName=(e)=>{
         setName(e.target.value);
     }
+    const handleChangeNickName=(e)=>{
+        setNickname(e.target.value);
+    }
     const handleChangeEmail=(e)=>{
         setEmail(e.target.value);
     }
-    const SameCheck =()=>{
-        let new_id="nakhyeon";
-        if(id===new_id){
-            alert("중복된 아이디입니다.");
-        }
-        else {
-            alert("사용가능한 아이디입니다.");
-            setCheckId(1);
-        }
-    }
-    // 토이프로젝트 스킬 입력 시
-    const onSkillHandler = (event) => {
-        let tmp = [...skill]
-        tmp[Number(event.target.id)] = event.target.value
-        setSkill([...tmp])
-        // console.log(toyProjectSkills)
 
+
+    
+    // 토이프로젝트 스킬 입력 시
+    const onSkillHandler = (event, index) => {
+        let tmp = [...skill]
+        tmp[index].name = event.target.value
+        setSkill([...tmp])
     }
     // 토이프로젝트 스킬 추가 버튼 클릭 시
     const onClickAddSkillsHandler = () => {
-        setSkill([...skill, ''])
+        setSkill([...skill, {name:'', skillProficiency:0}])
     }
-    
+    // 토이프로젝트 스킬 삭제 버튼 클릭 시
+    const onClickDeleteSkillsHandler = (index) => {
+        let tmp = [...skill]
+        tmp.splice(index, 1)
+        setSkill([...tmp])
+    }
     return(
         <HTMLS>
         <Wraps style={{marginLeft:"-9px"}}>
@@ -252,6 +297,11 @@ function SignUp(){
              <Contianer2>
                 <h3>이름</h3>
                 <ID placeholder="이름" onChange={handleChangeName}/>
+            </Contianer2>
+
+            <Contianer2>
+                <h3>닉네임</h3>
+                <ID placeholder="닉네임" onChange={handleChangeNickName}/>
             </Contianer2>
 
           
@@ -290,7 +340,9 @@ function SignUp(){
                 {skill.map((item, index) => (
                     <div>
                         <label>#</label>
-                        <input id={index} value={item} onChange={onSkillHandler} />
+                        <input id={index} value={item.name} onChange={(event)=>onSkillHandler(event, index)} />
+                        <SelectBox2 options={OPTIONS2} defaultValue={3} index={index}></SelectBox2>
+                        <button type="button" onClick={() => { onClickDeleteSkillsHandler(index) }}>x</button>
                     </div>
                 ))}
                 <button type="button" onClick={onClickAddSkillsHandler}>+</button>
