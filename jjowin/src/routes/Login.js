@@ -2,6 +2,9 @@ import {Link} from "react-router-dom"
 import styled from "styled-components";
 import { useMutation } from "react-query";
 import { useState } from "react";
+import { postLogin } from '../api.js'
+import { isLoginedAtom } from "../atom.js";
+import { useSetRecoilState, useRecoilValue } from "recoil";
 
 const Container = styled.div`
     width:40%;
@@ -60,22 +63,18 @@ const ID = styled.input`
     border: 1px solid darkgray;
 `;
 function Login(){
-
-    const postdata = async (data) => {
-        fetch("http://43.200.200.255:8080/user/login", {
-          method: "post",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        })
-          .then((response) => response.json())
-          .then((data) => console.log(data));
-      }
-      const { mutate, isLoading } = useMutation(postdata, {
+    const isLogined = useRecoilValue(isLoginedAtom)
+    const setLoginedAtom = useSetRecoilState(isLoginedAtom)
+      const { mutate, isLoading } = useMutation(postLogin, {
           onSuccess: data => {
-            console.log(data);
             const message = "success"
+            if(data.resultCode == 0){
+                setLoginedAtom(true)
+            }
+            else{
+                console.log('실패')
+            }
+            
             alert(message)
           },
           onError: () => {

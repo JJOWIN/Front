@@ -2,6 +2,7 @@ import {Link} from "react-router-dom"
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useMutation } from "react-query";
+import {postSignup} from '../api.js'
 
 const Container = styled.div`
     width:40%;
@@ -75,18 +76,8 @@ const Span = styled.span`
 `;
 
 function SignUp(){
-    const postdata = async (data) => {
-      fetch("http://43.200.200.255:8080/user", {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
-        .then((response) => response.json())
-        .then((data) => console.log(data));
-    }
-    const { mutate, isLoading } = useMutation(postdata, {
+    
+    const { mutate, isLoading } = useMutation(postSignup, {
         onSuccess: data => {
           console.log(data);
           const message = "success"
