@@ -1,10 +1,10 @@
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 import Layout from "./Layout";
 import Main from "./routes/Main";
-import ContestDetail from "./routes/ContestDetail";
+import ContestProjectDetail from "./routes/ContestProjectDetail";
 import Login from "./routes/Login";
 import ContestList from "./routes/ContestList";
-import ToyProject from "./routes/ToyProject";
+import ToyProject from "./routes/ToyProjectList";
 import ToyProjectDetail from "./routes/ToyProjectDetail";
 import CreateToyProject from "./routes/CreateToyProject";
 import SignUp from "./routes/SignUp";
@@ -21,13 +21,13 @@ function Router(){
         <Routes>
             <Route element={<Layout />}>
                 <Route path="/" element={<Main/>}></Route>
-                <Route path="/contestList" element={<ContestList/>}></Route>
                 <Route path="/toyprojectList" element={<ToyProject/>}></Route>
                 <Route path="/login" element={<Login/>}></Route>
                 <Route path="/signUp" element={<SignUp/>}></Route>
-                <Route path="/toyprojectList/toyProjectDetail" element={<ToyProjectDetail/>}></Route>
-                <Route path="/contestList/contestDetail" element={<ContestDetail/>}></Route>
+                <Route path="/contestList" element={<ContestList/>}></Route>
+                <Route path="/contestList/ContestProjectDetail/:contestProjectNum" element={<ContestProjectDetail/>}></Route>
                 <Route path="/toyprojectList/createToyProject" element={<CreateToyProject/>}></Route>
+                <Route path="/toyprojectList/toyProjectDetail/:toyProjectNum" element={<ToyProjectDetail/>}></Route>
                 <Route path="/myPage" element={<MyPage/>}>
                     <Route path="/myPage/myPageInfoFix" element={<MyPageInfoFix/>}></Route>
                     <Route path="/myPage/myPageSelect" element={<MyPageSelect/>}></Route>

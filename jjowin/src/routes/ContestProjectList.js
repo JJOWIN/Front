@@ -33,57 +33,70 @@ const Input = styled.input`
     width: 7vw;
     height: 2vh;
 `;
-function ToyProject(){
+function ContestProjectList(){
     const contest =[
        {
+        contesttNum: 1,
         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
         title: "ㅈㅇ 엑셀러레이션"
        },
        {
+        contesttNum: 2,
         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
         title: "ㅋㄹㅋ 엑셀러레이션"
        },
        {
+        contesttNum: 3,
         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
         title: "ㄹㅇ 엑셀러레이션"
        },
        {
+        contesttNum: 4,
         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
         title: "창업 엑셀러레이션"
        },
        {
+        contesttNum: 5,
         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
         title: "창업 엑셀러레이션"
        },
        {
+        contesttNum: 6,
         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
         title: "창업 엑셀러레이션"
        },
        {
+        contesttNum: 7,
         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
         title: "ㅎㅎ 엑셀러레이션"
        },
        {
+        contesttNum: 8,
         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
         title: "ㅋㅋ 엑셀러레이션"
        },
        {
+        contesttNum: 9,
         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
         title: "ㅎㅎ 엑셀러레이션"
        },
        {
+        contesttNum: 10,
         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
         title: "ㅈㅈ 엑셀러레이션"
        },
        {
+        contesttNum: 11,
         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
         title: "ㄷㄷ 엑셀러레이션"
        },
        {
+        contesttNum: 12,
         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
         title: "ㄷㄷ 엑셀러레이션"
        },
        {
+        contesttNum: 13,
         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
         title: "ㄷㄷ 엑셀러레이션"
        },
@@ -102,27 +115,28 @@ function ToyProject(){
     return(
         <>
        <Container>
-         <h1>토이프로젝트</h1>
+         <h1>공모전프로젝트</h1>
        </Container>
         <div style={{display:"flex",marginLeft:"7vw",marginTop:"3vh"}}>
         <h5>검색창:</h5>
         <Input onChange={Change}></Input>
-        <a href="../toyprojectList/createToyProject"><button>프로젝트 생성</button></a>
         </div>
         <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center",textAlign:"center",paddingRight:"4vw"}}>
-        {search.map((item)=>{
+        {
+        search.map((item)=>{
+            const url =`/contestList/contestProjectDetail/${item.contesttNum}`;
             return(
                 <Collection>
-                    <a href="toyProjectList/toyProjectDetail">
+                {}
+                    <a href={url}>
                     <Image src={item.src}></Image>
                     <h2>{item.title}</h2>
                     </a>
                </Collection>
-               
             )
         })}
         </div>
        </>
     )
 }
-export default ToyProject;
+export default ContestProjectList;

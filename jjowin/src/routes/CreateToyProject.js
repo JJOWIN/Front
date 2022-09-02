@@ -9,7 +9,6 @@ function CreateToyProject() {
     const fieldList = [
         { id: 0, name: '기획/아이디어' },
         { id: 1, name: '논문/리포트' },
-        { id: 2, name: '네이밍/슬로건' },
         { id: 3, name: '디자인' },
         { id: 4, name: '광고/마케팅' },
         { id: 5, name: '사진' },

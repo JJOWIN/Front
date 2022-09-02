@@ -1,5 +1,7 @@
 import { Outlet,Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useRecoilValue,useSetRecoilState } from 'recoil';
+import { LoginStatus,TotalId,TotalPw } from './atom';
 
 const Header = styled.header`
     background: white;
@@ -53,6 +55,15 @@ const Header = styled.header`
 `;
 
 const Layout = () => {
+  const loginStatus = useRecoilValue(LoginStatus);
+  const setterLoginStatus=useSetRecoilState(LoginStatus);
+  const setterFnId=useSetRecoilState(TotalId);
+  const setterFnPw=useSetRecoilState(TotalPw);
+  const onClickLogOut=()=>{
+    setterLoginStatus(0);
+    setterFnId("");
+    setterFnPw("");
+  }
    return (
     <div>
       <Header>
@@ -75,7 +86,8 @@ const Layout = () => {
             <a href="../myPage/myPageInfoFix"><h2>㉾</h2></a>
         </div>
         <div className='login'>
-            <a href="../login"><button>로그인</button></a>
+            {!loginStatus?<a href="../login"><button>로그인</button></a>:
+            <a href="../login"><button onClick={onClickLogOut}>로그아웃</button></a>}
         </div>
       </Header>
       <main>

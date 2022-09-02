@@ -1,6 +1,10 @@
-import {Link} from "react-router-dom"
+import {Link,useNavigate} from "react-router-dom"
 import styled from "styled-components";
-import {QueryClient, QueryClientProvider} from "react-query";
+import { useMutation } from "react-query";
+import { useState } from "react";
+import { useRecoilValue,useSetRecoilState } from "recoil";
+import { LoginStatus, TotalId, TotalPw } from "../atom.js";
+
 const Container = styled.div`
     width:40%;
     height:100%;
@@ -58,6 +62,52 @@ const ID = styled.input`
     border: 1px solid darkgray;
 `;
 function Login(){
+    
+    const postdata = async (data) => {
+        fetch("http://43.200.200.255:8080/user/login", {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if(data.resultCode===0){
+                navigate('/');
+            }
+          });
+      }
+      const { mutate, isLoading } = useMutation(postdata, {
+          onSuccess: data => {
+          },
+          onError: () => {
+            alert("there was an error")
+          },
+        });
+
+    const [id, setId] = useState('')
+    const [password, setPassword] = useState('')
+    let navigate = useNavigate();
+    const setterFnId=useSetRecoilState(TotalId);
+    const setterFnPw=useSetRecoilState(TotalPw);
+    const setterLoginStatus=useSetRecoilState(LoginStatus);
+    const onIdHandler = (event) => {
+        setId(event.currentTarget.value)
+    }
+    const onPasswordHandler = (event) => {
+        setPassword(event.currentTarget.value)
+    }
+    const onClickLoginHandler = () => {
+        mutate({
+            "email":id,
+            "password":password
+        })
+        setterFnId(id);
+        setterFnPw(password);
+        setterLoginStatus(1); 
+        
+    }
     return(
         <HTMLS>
         <Wraps style={{marginLeft:"-9px"}}>
@@ -67,13 +117,15 @@ function Login(){
                 <div style={{width:"100px",height:"100px",backgroundColor:"#AD9AEE",borderRadius:"50%",margin:0}}></div>
             </Container1>
            <Container1>
-              <ID placeholder="ID" />
+              <ID placeholder="ID" onChange={onIdHandler} value={id}/>
             </Container1>
              <Container1>
-            <ID placeholder="PW" />
+            <ID placeholder="PW" type='password' onChange={onPasswordHandler} value={password}/>
             </Container1>
             <Contianer2>
-              <a href="/"><Button>로그인</Button></a>
+              {/* <a href="/"> */}
+                <Button onClick={onClickLoginHandler}>로그인</Button>
+                {/* </a> */}
             </Contianer2>
             <Container3>
                 <Link to="../findId">ID 찾기</Link>

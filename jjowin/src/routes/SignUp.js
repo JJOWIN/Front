@@ -75,28 +75,27 @@ const Span = styled.span`
 `;
 
 function SignUp(){
-    // const postdata = async (data) => {
-    //   fetch(`http://43.200.200.255:8080/users`, {
-    //     method: "post",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    //   })
-    //     .then((response) => response.json())
-    //     .then((data) => console.log(data));
-    // }
-    // const { mutate, isLoading } = useMutation(postdata, {
-    //     onSuccess: data => {
-    //       console.log(data);
-    //       const message = "success"
-    //       alert(message)
-    //     },
-    //     onError: () => {
-    //       alert("there was an error")
-    //     },
-
-    //   });
+    const postdata = async (data) => {
+      fetch("http://43.200.200.255:8080/user", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+    }
+    const { mutate, isLoading } = useMutation(postdata, {
+        onSuccess: data => {
+          console.log(data);
+          const message = "success"
+          alert(message)
+        },
+        onError: () => {
+          alert("there was an error")
+        },
+      });
     const [proficiency, setProficiency] = useState(new Array(5).fill(false))
     const [agree,setAgree]=useState([0,0,0]);
     const [nickname,setNickname]=useState(0);
@@ -120,10 +119,10 @@ function SignUp(){
         { value: 1, name: "하" },
     ];
     const Body = {
-		"name": "유저 이름",
-		"nickname": "닉네임",
-		"email": "이메일",
-		"password": "비밀번호",
+		"name": "쪼인",
+		"nickname": "쪼인",
+		"email": "jjowin23@gmail.com",
+		"password": "whdls23@",
 		"job": "직무",
 		"jobLevel": 1,
 		"selfIntro": "자기 소개",
@@ -216,18 +215,25 @@ function SignUp(){
     }
     
     const ButtonClick=()=>{
-        fetch('http://43.200.200.255:8080/user', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(Body)
-          })
-          .then(response=>console.log(response.json().then(data=>console.log(data.resultCode))))
-          
+        mutate(
+            {
+                "name": "쪼인",
+                "nickname": "쪼인",
+                "email": "jjowin23@gmail.com",
+                "password": "whdls23@",
+                "job": "직무",
+                "jobLevel": 1,
+                "selfIntro": "자기 소개",
+                "isReceiveMail": true,
+                "userSkills": [
+                    {
+                            "name": "스킬 이름",
+                            "level" : 1
+                    },
+                ]
+             }
+        );
     }
-    
-
     const handleChangePw=(e)=>{
         setPw(e.target.value);
     }
