@@ -1,4 +1,4 @@
-import {Link, Navigate} from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useMutation } from "react-query";
@@ -88,6 +88,7 @@ function SignUp(){
     const [role,setRole]=useState(0);
     const [skill,setSkill]=useState([{name:'', skillProficiency:0}]);
     const [pwSame,setPwSame]=useState(0);
+    let navigate = useNavigate();
     const OPTIONS = [
         { value: "developer", name: "개발자" },
         { value: "designer", name: "UI/UX 디자이너" },
@@ -103,7 +104,7 @@ function SignUp(){
           console.log(data);
           alert(data.resultMsg)
           if(data.resultCode === 0){
-            Navigate('/')
+            navigate('/')
           }
           
         },
