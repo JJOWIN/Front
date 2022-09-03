@@ -1,8 +1,8 @@
-import {Link} from "react-router-dom"
+import {Link, Navigate} from "react-router-dom"
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useMutation } from "react-query";
-import {postSignup} from '../api.js'
+import { postSignup } from '../api.js'
 
 const Container = styled.div`
     width:40%;
@@ -76,17 +76,6 @@ const Span = styled.span`
 `;
 
 function SignUp(){
-    
-    const { mutate, isLoading } = useMutation(postSignup, {
-        onSuccess: data => {
-          console.log(data);
-          const message = "success"
-          alert(message)
-        },
-        onError: () => {
-          alert("there was an error")
-        },
-      });
     const [proficiency, setProficiency] = useState(new Array(5).fill(false))
     const [agree,setAgree]=useState([0,0,0]);
     const [nickname,setNickname]=useState(0);
@@ -109,19 +98,19 @@ function SignUp(){
         { value: 2, name: "중" },
         { value: 1, name: "하" },
     ];
-    const Body = {
-		"name": "쪼인",
-		"nickname": "쪼인",
-		"email": "jjowin23@gmail.com",
-		"password": "whdls23@",
-		"job": "직무",
-		"jobLevel": 1,
-		"selfIntro": "자기 소개",
-		"userSkills": [
-			{"name": "스킬 이름"},
-		]
-		
-}
+    const { mutate, isLoading } = useMutation(postSignup, {
+        onSuccess: data => {
+          console.log(data);
+          alert(data.resultMsg)
+          if(data.resultCode === 0){
+            Navigate('/')
+          }
+          
+        },
+        onError: () => {
+          alert("there was an error")
+        },
+      });
         const SelectBox = (props) => {
             const handleChange = (e) => {
                setRole(e.target.value);
