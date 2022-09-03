@@ -3,13 +3,15 @@ import styled from "styled-components";
 import { useState,useEffect } from "react";
 
 const Container  = styled.div`
-    height: 20vh;
+    height: 5vh;
     background-color: powderblue;
     text-align: center;
     justify-content: center;
-    h1{
-        padding-top: 8vh;
+    align-items: center;
+    display: flex;
+    h3{
         margin-top: 0;
+        margin-bottom: 0;
     }
 `;
 const Image = styled.img`
@@ -115,7 +117,7 @@ function ContestProjectList(){
     return(
         <>
        <Container>
-         <h1>공모전프로젝트</h1>
+         <h3>공모전프로젝트</h3>
        </Container>
         <div style={{display:"flex",marginLeft:"7vw",marginTop:"3vh"}}>
         <h5>검색창:</h5>

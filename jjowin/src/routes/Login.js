@@ -2,14 +2,9 @@ import {Link,useNavigate} from "react-router-dom"
 import styled from "styled-components";
 import { useMutation } from "react-query";
 import { useState } from "react";
-<<<<<<< HEAD
-import { useRecoilValue,useSetRecoilState } from "recoil";
-import { LoginStatus, TotalId, TotalPw } from "../atom.js";
-=======
 import { postLogin } from '../api.js'
-import { isLoginedAtom } from "../atom.js";
+import { isLoginedAtom,TotalId,TotalPw,LoginStatus } from "../atom.js";
 import { useSetRecoilState, useRecoilValue } from "recoil";
->>>>>>> c6dfa2f02ba758de6f5ef3722f31a646a349dc9a
 
 const Container = styled.div`
     width:40%;
@@ -68,7 +63,6 @@ const ID = styled.input`
     border: 1px solid darkgray;
 `;
 function Login(){
-<<<<<<< HEAD
     
     const postdata = async (data) => {
         fetch("http://43.200.200.255:8080/user/login", {
@@ -87,21 +81,6 @@ function Login(){
       }
       const { mutate, isLoading } = useMutation(postdata, {
           onSuccess: data => {
-=======
-    const isLogined = useRecoilValue(isLoginedAtom)
-    const setLoginedAtom = useSetRecoilState(isLoginedAtom)
-      const { mutate, isLoading } = useMutation(postLogin, {
-          onSuccess: data => {
-            const message = "success"
-            if(data.resultCode == 0){
-                setLoginedAtom(true)
-            }
-            else{
-                console.log('실패')
-            }
-            
-            alert(message)
->>>>>>> c6dfa2f02ba758de6f5ef3722f31a646a349dc9a
           },
           onError: () => {
             alert("there was an error")
