@@ -63,7 +63,7 @@ const ID = styled.input`
     border: 1px solid darkgray;
 `;
 function Login(){
-    
+    const [log,setLog]=useState(0);
     const postdata = async (data) => {
         fetch("http://43.200.200.255:8080/user/login", {
           method: "post",
@@ -75,6 +75,7 @@ function Login(){
           .then((response) => response.json())
           .then((data) => {
             if(data.resultCode===0){
+                setLog(1);
                 navigate('/');
             }
           });
@@ -106,6 +107,7 @@ function Login(){
         })
         setterFnId(id);
         setterFnPw(password);
+        if(log)
         setterLoginStatus(1); 
         
     }
