@@ -30,7 +30,7 @@ function ContestList(){
         </Container>
         <Container1>
             <ContestLists>
-                d
+                
             </ContestLists>
         </Container1>
         <ContestProjectList/>

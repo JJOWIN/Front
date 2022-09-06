@@ -79,12 +79,11 @@ function SignUp(){
     const [proficiency, setProficiency] = useState(new Array(5).fill(false))
     const [agree,setAgree]=useState([0,0,0]);
     const [nickname,setNickname]=useState(0);
-    const [checkId,setCheckId]=useState(0);
     const [pw,setPw]=useState(0);
     const [checkPw,setCheckPw]=useState(0);
     const [name,setName]=useState(0);
     const [email,setEmail]=useState(0);
-    const [emailCheck,setEmailCheck]=useState(0);
+    const [emailCheck,setEmailCheck]=useState(0);   
     const [role,setRole]=useState(0);
     const [skill,setSkill]=useState([{name:'', skillProficiency:0}]);
     const [pwSame,setPwSame]=useState(0);
