@@ -2,8 +2,8 @@ import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components";
 import { useMutation } from "react-query";
 import { useState } from "react";
-import { postLogin } from '../api.js'
-import { isLoginedAtom, TotalId, TotalPw, LoginStatus } from "../atom.js";
+import { postLogin } from '../../api.js'
+import { isLoginedAtom, TotalId, TotalPw, LoginStatus } from "../../atom.js";
 import { useSetRecoilState, useRecoilValue } from "recoil";
 
 const Container = styled.div`

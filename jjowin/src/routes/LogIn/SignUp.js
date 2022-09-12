@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useMutation } from "react-query";
-import { postSignup } from '../api.js'
+import { postSignup } from '../../api.js'
 
 const Container = styled.div`
     width:40%;

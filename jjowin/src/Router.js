@@ -1,19 +1,26 @@
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 import Layout from "./Layout";
 import Main from "./routes/Main";
-import ContestProjectDetail from "./routes/ContestProjectDetail";
-import Login from "./routes/Login";
-import ContestList from "./routes/ContestList";
-import ToyProject from "./routes/ToyProjectList";
-import ToyProjectDetail from "./routes/ToyProjectDetail";
-import CreateToyProject from "./routes/CreateToyProject";
-import SignUp from "./routes/SignUp";
-import MyPage from "./MyPage";
+
+import ContestProjectDetail from "./routes/Contest/ContestProjectDetail";
+import ContestList from "./routes/Contest/ContestList";
+import ContestProjectNow from "./routes/Contest/ContestProjectNow";
+
+import ToyProject from "./routes/ToyProject/ToyProjectList";
+import ToyProjectDetail from "./routes/ToyProject/ToyProjectDetail";
+import CreateToyProject from "./routes/ToyProject/CreateToyProject";
+
+import SignUp from "./routes/LogIn/SignUp";
+import Login from "./routes/LogIn/Login";
+
+import MyPage from "./routes/MyPage/MyPage";
 import MyPageInfoFix from "./routes/MyPage/MyPageInfoFix";
 import MyPageSelect from "./routes/MyPage/MyPageSelect";
 import MyPageSetting from "./routes/MyPage/MyPageSetting";
 import MyPageJoinProject from "./routes/MyPage/MyPageJoinProject";
 import MyPageComment from "./routes/MyPage/MyPageComment";
+import PdfViewr from "./PdfViewr";
+
 
 function Router(){
     return (
@@ -25,6 +32,8 @@ function Router(){
                 <Route path="/login" element={<Login/>}></Route>
                 <Route path="/signUp" element={<SignUp/>}></Route>
                 <Route path="/contestList" element={<ContestList/>}></Route>
+                <Route path="/contestProjectNow/" element={<ContestProjectNow/>}></Route>
+                <Route path="/pdfViewr/" element={<PdfViewr/>}></Route>
                 <Route path="/contestList/ContestProjectDetail/:contestProjectNum" element={<ContestProjectDetail/>}></Route>
                 <Route path="/toyprojectList/createToyProject" element={<CreateToyProject/>}></Route>
                 <Route path="/toyprojectList/toyProjectDetail/:toyProjectNum" element={<ToyProjectDetail/>}></Route>

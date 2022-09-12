@@ -1,21 +1,23 @@
 import { useState } from "react";
-import {Link} from "react-router-dom"
+import {Link,useNavigate} from "react-router-dom"
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
     background-color: yellow;
     width:50%;
-    height:1000vh;
-`
-const Container2 = styled.div`
-    background-color: red;
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 function MyPageJoinProject(){
+    const navigate = useNavigate();
 
     return(
+
        <Container>
-         참여한  프로젝트 
+         <div style={{width:"300px",height:"300px",display:"flex",alignItems:"center",justifyContent:"center",backgroundColor:"white"}}onClick={()=>navigate("/contestProjectNow")}> 이동!</div>
        </Container>
     )
 }

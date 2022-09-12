@@ -13,9 +13,9 @@ export const TotalPw = atom({
     default:"",
     effects_UNSTABLE: [persistAtom],
 })
-
 export const TotalId = atom({
     key:"TotalId",
     default:"",
     effects_UNSTABLE: [persistAtom],
 })
+    

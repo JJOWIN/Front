@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from "styled-components";
 import ReactQuill from 'react-quill';
-import '../quill.snow.css';
+import '../../quill.snow.css';
 
 function CreateToyProject() {
     // 토이프로젝트 명

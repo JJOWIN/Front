@@ -86,8 +86,8 @@ const Layout = () => {
             <a href="../myPage/myPageInfoFix"><h2>㉾</h2></a>
         </div>
         <div className='login'>
-            {!loginStatus?<a href="../login"><button>로그인</button></a>:
-            <a href="../login"><button onClick={onClickLogOut}>로그아웃</button></a>}
+            {!loginStatus?<a href="/login"><button>로그인</button></a>:
+            <a href="/login"><button onClick={onClickLogOut}>로그아웃</button></a>}
         </div>
       </Header>
       <main>

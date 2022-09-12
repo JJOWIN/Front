@@ -1,6 +1,5 @@
-import {Link} from "react-router-dom";
 import styled from "styled-components";
-import { useState,useEffect } from "react";
+import { useState } from "react";
 
 const Container  = styled.div`
     height: 5vh;
