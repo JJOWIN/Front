@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useMutation } from "react-query";
 import { useState } from "react";
 import { postLogin } from '../../api.js'
-import { isLoginedAtom, TotalId, TotalPw, LoginStatus } from "../../atom.js";
+import { isLoginedAtom, TotalId, TotalPw, LoginStatus ,University} from "../../atom.js";
 import { useSetRecoilState, useRecoilValue } from "recoil";
 
 const Container = styled.div`
@@ -69,6 +69,7 @@ function Login() {
     const setterFnId = useSetRecoilState(TotalId);
     const setterFnPw = useSetRecoilState(TotalPw);
     const setterLoginStatus = useSetRecoilState(LoginStatus);
+    const setterUniversity = useSetRecoilState(University);
 
     const { mutate, isLoading } = useMutation(postLogin, {
         onSuccess: data => {
@@ -77,6 +78,7 @@ function Login() {
                 setterFnId(id);
                 setterFnPw(password);
                 setterLoginStatus(1);
+                setterUniversity("충북대학교");
                 navigate('/')
             }
         },

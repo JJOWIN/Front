@@ -18,4 +18,8 @@ export const TotalId = atom({
     default:"",
     effects_UNSTABLE: [persistAtom],
 })
-    
+export const University = atom({
+    key:"University",
+    default:"",
+    effects_UNSTABLE: [persistAtom],
+})

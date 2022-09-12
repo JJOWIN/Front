@@ -2,7 +2,8 @@ import { useState } from "react";
 import {Link} from "react-router-dom"
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
-
+import { isLoginedAtom, TotalId, TotalPw, LoginStatus ,University} from "../../atom.js";
+import { useSetRecoilState, useRecoilValue } from "recoil";
 const Container = styled.div`
     width:50%;
     height:100vh;
@@ -40,8 +41,8 @@ const Button = styled.button`
 `
 
 function MyPageInfoFix(){
-    const [proof,setProof] = useState(0);
-    const [colleges,setColleges] = useState(0);
+    const [proof,setProof] = useState(0); 
+    const college = useRecoilValue(University);
     const [emailAccept,setEmailAccept] = useState(0);
     const [email,setEmail] = useState("knh6269@gmail.com");
     const password ='12345';
@@ -51,7 +52,7 @@ function MyPageInfoFix(){
     }   
     const onClickSubmit = () =>{
         alert("변경되었습니다");
-        console.log(emailAccept,proof,colleges);
+        console.log(emailAccept,proof,college);
     }
    const emailAgree = () =>{
         setEmailAccept(1);
@@ -85,10 +86,10 @@ function MyPageInfoFix(){
             </ProofSelf>
 
             <College>
-                {colleges?
+                {college?
                 <div style={{display:"flex"}}>
                     <h3>인증된 학교 :</h3>
-                    <h3>{user.college}</h3>
+                    <h3>{college}</h3>
                 </div>:
                 <div>
                     <div>

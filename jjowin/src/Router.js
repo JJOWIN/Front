@@ -5,7 +5,7 @@ import Main from "./routes/Main";
 import ContestProjectDetail from "./routes/Contest/ContestProjectDetail";
 import ContestList from "./routes/Contest/ContestList";
 import ContestProjectNow from "./routes/Contest/ContestProjectNow";
-import ContestDetail from "./routes/ContestDetail";
+import ContestDetail from "./routes/Contest/ContestDetail";
 
 import ToyProject from "./routes/ToyProject/ToyProjectList";
 import ToyProjectDetail from "./routes/ToyProject/ToyProjectDetail";
