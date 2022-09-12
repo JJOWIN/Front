@@ -5,6 +5,7 @@ import Main from "./routes/Main";
 import ContestProjectDetail from "./routes/Contest/ContestProjectDetail";
 import ContestList from "./routes/Contest/ContestList";
 import ContestProjectNow from "./routes/Contest/ContestProjectNow";
+import ContestDetail from "./routes/ContestDetail";
 
 import ToyProject from "./routes/ToyProject/ToyProjectList";
 import ToyProjectDetail from "./routes/ToyProject/ToyProjectDetail";
@@ -22,6 +23,7 @@ import MyPageComment from "./routes/MyPage/MyPageComment";
 import PdfViewr from "./PdfViewr";
 
 
+
 function Router(){
     return (
     <BrowserRouter>
@@ -34,6 +36,8 @@ function Router(){
                 <Route path="/contestList" element={<ContestList/>}></Route>
                 <Route path="/contestProjectNow/" element={<ContestProjectNow/>}></Route>
                 <Route path="/pdfViewr/" element={<PdfViewr/>}></Route>
+                {/* 각 공모전마다 연결되도록 수정해야함 */}
+                <Route path="/contestList/contestDetail" element={<ContestDetail/>}></Route>
                 <Route path="/contestList/ContestProjectDetail/:contestProjectNum" element={<ContestProjectDetail/>}></Route>
                 <Route path="/toyprojectList/createToyProject" element={<CreateToyProject/>}></Route>
                 <Route path="/toyprojectList/toyProjectDetail/:toyProjectNum" element={<ToyProjectDetail/>}></Route>
