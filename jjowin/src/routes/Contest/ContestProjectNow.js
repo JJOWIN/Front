@@ -143,7 +143,7 @@ function ContestProjectNow(){
         {username: "무질서도" , message:"안녕하세요??"},
         {username: "무질서도" , message:"안녕하세요??"},
         {username: "무질서도" , message:"안녕하세요??"},
-    ])
+    ]);
     const onChangeMessage = (e) =>{
         setSendMessage(e.target.value);
     }
@@ -223,7 +223,7 @@ function ContestProjectNow(){
                 :  0
                 }
             <div style={{justifyContent:"center",alignItems:"center",display:"flex",marginTop:"2vh"}}><button onClick={()=>navigate("/myPage/myPageJoinProject")} style={{width:"10vw",height:"5vh"}}>돌아가기</button></div>
-          
+            
             </div>
         
         </div>

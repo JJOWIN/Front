@@ -77,9 +77,14 @@ const Layout = () => {
             <h2>공모전</h2>
             </Link>
         </div>
-        <div style={{width:'40%'}}>
+        <div style={{width:'30%'}}>
             <Link to ="/toyprojectList">
             <h2>토이프로젝트</h2>
+            </Link>
+        </div>
+        <div style={{width:'30%'}}>
+            <Link to ="/search">
+            <h2>검색</h2>
             </Link>
         </div>
         <div className='mypage'>

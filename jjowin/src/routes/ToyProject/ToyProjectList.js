@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import {Link,useNavigate} from "react-router-dom";
 import styled from "styled-components";
 import { useState,useEffect } from "react";
 
@@ -15,6 +15,19 @@ const Container  = styled.div`
 const Image = styled.img`
     width:10vw;
     height:24vh;
+`;
+const AddToy = styled.button`
+        border-radius:50%;
+        border: 1px solid black;
+        width:3vw;
+        height:6vh;
+        font-size: 2vw;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        right:2vw;
+        bottom:2vh;
 `;
 const Collection = styled.div`
     margin-left:200px;
@@ -34,6 +47,7 @@ const Input = styled.input`
     height: 2vh;
 `;
 function ToyProject(){
+    const navigate = useNavigate();
     const contest =[
         {
             toyProjectNum: 1,
@@ -114,13 +128,13 @@ function ToyProject(){
 
     return(
         <>
+        <AddToy onClick={()=>navigate("../toyprojectList/createToyProject")}>+</AddToy>
        <Container>
          <h1>토이프로젝트</h1>
        </Container>
         <div style={{display:"flex",marginLeft:"7vw",marginTop:"3vh"}}>
         <h5>검색창:</h5>
         <Input onChange={Change}></Input>
-        <a href="../toyprojectList/createToyProject"><button>프로젝트 생성</button></a>
         </div>
         <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center",textAlign:"center",paddingRight:"4vw"}}>
         {search.map((item)=>{

@@ -21,6 +21,7 @@ import MyPageSetting from "./routes/MyPage/MyPageSetting";
 import MyPageJoinProject from "./routes/MyPage/MyPageJoinProject";
 import MyPageComment from "./routes/MyPage/MyPageComment";
 import PdfViewr from "./PdfViewr";
+import Search from "./routes/Search";
 
 
 
@@ -33,6 +34,7 @@ function Router(){
                 <Route path="/toyprojectList" element={<ToyProject/>}></Route>
                 <Route path="/login" element={<Login/>}></Route>
                 <Route path="/signUp" element={<SignUp/>}></Route>
+                <Route path="/search" element={<Search/>}></Route>
                 <Route path="/contestList" element={<ContestList/>}></Route>
                 <Route path="/contestProjectNow/" element={<ContestProjectNow/>}></Route>
                 <Route path="/pdfViewr/" element={<PdfViewr/>}></Route>

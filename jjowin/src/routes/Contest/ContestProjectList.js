@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Container  = styled.div`
     height: 5vh;
@@ -33,6 +34,19 @@ const Input = styled.input`
     margin-top: 1vh;
     width: 7vw;
     height: 2vh;
+`;
+const AddContestProject = styled.button`
+        border-radius:50%;
+        border: 1px solid black;
+        width:3vw;
+        height:6vh;
+        font-size: 2vw;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        right:2vw;
+        bottom:2vh;
 `;
 function ContestProjectList(){
     const contest =[
@@ -118,7 +132,7 @@ function ContestProjectList(){
     const [key,SetKey] = useState("");
     const [contestList,setContestList] = useState(contest);
     const [fieldValue, setFieldValue] =useState(false);
-   
+    const navigate = useNavigate();
     let search=contest.filter((item)=>{
         return(item.title.includes(key));
     })
@@ -163,6 +177,7 @@ function ContestProjectList(){
 
     return(
         <>
+        <AddContestProject onClick={()=>navigate("/")}>+</AddContestProject>
        <Container>
          <h3>공모전프로젝트</h3>
        </Container>
