@@ -3,6 +3,113 @@ import styled from "styled-components";
 import ReactQuill from 'react-quill';
 import '../../quill.snow.css';
 
+const Container = styled.div`
+// display:flex;
+flex-wrap:wrap;
+// justify-content:space-between;
+width:40%;
+margin:auto;
+margin-top:3vh;
+`
+const Title = styled.p`
+margin:40px 0px 15px 0px;
+font-weight:800;
+`
+const FieldContainer = styled.div`
+width:100%;
+box-sizing: border-box;
+// display:flex;
+// flex-wrap:wrap;
+background-color:#f6f6f6;
+border-radius: 10px;
+padding:2vh;
+`
+const Input = styled.input`
+box-sizing: border-box;
+background-color:#f6f6f6;
+border:none;
+border-radius: 10px;
+height: 5vh;
+`
+const Text = styled.span`
+margin:0vh 2vh 0vh 1vh;
+`
+const InputName = styled(Input)`
+width:100%;
+padding:0 0 0 2vh;
+::placeholder{
+    color:darkgray;
+    margin-left: 3vw;
+}
+`
+const InputRole = styled(Input)`
+width:25%;
+padding:0 0 0 2vh;
+::placeholder{
+    color:darkgray;
+    margin-left: 3vw;
+}
+`
+const InputRoleNum = styled(Input)`
+width:15%;
+padding:0 0 0 2vh;
+::placeholder{
+    color:darkgray;
+    margin-left: 3vw;
+}
+`
+const AddButton = styled.button`
+box-sizing: border-box;
+margin-left: auto;
+background-color:#14b91c;
+color:white;
+border:none;
+border-radius: 10px;
+height: 4vh;
+padding:0 2vh 0 2vh;
+`
+const DeleteButton = styled.button`
+box-sizing: border-box;
+margin-left: auto;
+background-color:#ffffff;
+color:#ff4921;
+border:solid 1px #ff4921;
+border-radius: 10px;
+height: 4vh;
+padding:0 2vh 0 2vh;
+`
+const RolesContainer = styled.div`
+display:flex;
+align-items: center;
+flex-wrap:wrap;
+// justify-content:space-between;
+width:100%;
+`
+const Hr = styled.hr`
+border:0;
+height:2px;
+background-color:#f4f4f4;
+`
+const CompleteButton = styled.button`
+box-sizing: border-box;
+margin-left:1vw;
+background-color:#14b91c;
+color:#ffffff;
+border:none;
+border-radius: 10px;
+height: 6vh;
+padding:0 7vh 0 7vh;
+`
+const CancelButton = styled(CompleteButton)`
+background-color:#e7e7e7;
+color:#464646;
+`
+const ButtonContainer = styled(Container)`
+display:flex;
+width:100%;
+justify-content:flex-end;
+margin:5vh 0vh 5vh 0vh;
+`
 function CreateToyProject() {
     // 토이프로젝트 명
     const [toyProjectName, setToyProjectName] = useState("")
@@ -25,13 +132,19 @@ function CreateToyProject() {
     // 토이프로젝트 이미지 Url
     const [toyProjectImageUrl, setToyProjectImageUrl] = useState('')
     // 토이프로젝트 직무
-    const [toyProjectRoles, setToyProjectRoles] = useState([{ role: '', num: '' }])
+    const [toyProjectRoles, setToyProjectRoles] = useState([])
+    // 토이프로젝트 직무 입력
+    const [inputToyProjectRole, setInputToyProjectRole] = useState('')
+    // 토이프로젝트 인원 입력
+    const [inputToyProjectRoleNum, setInputToyProjectRoleNum] = useState('')
     // 학교사람만
     const [onlySchool, setOnlySchool] = useState(false)
     // 토이프로젝트 내용
     const [toyProjectContent, setToyProjectContent] = useState("")
     // 토이프로젝트 스킬
-    const [toyProjectSkills, setToyProjectSkills] = useState([''])
+    const [toyProjectSkills, setToyProjectSkills] = useState([])
+    // 토이프로젝트 스킬 입력
+    const [inputToyProjectSkills, setInputToyProjectSkills] = useState('')
     //에디터 내용 
     const [read,setRead]=useState("");
     //에디터 내용 
@@ -70,30 +183,29 @@ function CreateToyProject() {
 
     // 토이프로젝트 직무 추가 버튼 클릭 시
     const onClickAddToyProjectRolesHandler = () => {
-        setToyProjectRoles([...toyProjectRoles, { role: '', num: '' }])
+        setToyProjectRoles([...toyProjectRoles, { role: inputToyProjectRole, num: inputToyProjectRoleNum }])
     }
-
-    // 토이프로젝트 직무 입력 시
-    const onToyProjectRolesHandler = (event) => {
+    // 토이프로젝트 직무 삭제 버튼 클릭 시
+    const onClickDeleteToyProjectRolesHandler = (index) => {
         let tmp = [...toyProjectRoles]
-        tmp[Number(event.target.id)].role = event.target.value
+        tmp.splice(index, 1)
         setToyProjectRoles([...tmp])
+    }
+    // 토이프로젝트 직무 입력 시
+    const onToyProjectRoleHandler = (event) => {
+        setInputToyProjectRole(event.target.value)
         // console.log(toyProjectRoles)
     }
 
     // 토이프로젝트 인원 입력 시
-    const onToyProjectPeoplesHandler = (event) => {
-        let tmp = [...toyProjectRoles]
-        tmp[Number(event.target.id)].num = event.target.value
-        setToyProjectRoles([...tmp])
+    const onToyProjectRoleNumHandler = (event) => {
+        setInputToyProjectRoleNum(event.target.value)
     }
 
 
     // 토이프로젝트 스킬 입력 시
     const onToyProjectSkillsHandler = (event) => {
-        let tmp = [...toyProjectSkills]
-        tmp[Number(event.target.id)] = event.target.value
-        setToyProjectSkills([...tmp])
+        setInputToyProjectSkills(event.target.value)
         // console.log(toyProjectSkills)
 
     }
@@ -105,7 +217,13 @@ function CreateToyProject() {
     }
     // 토이프로젝트 스킬 추가 버튼 클릭 시
     const onClickAddToyProjectSkillsHandler = () => {
-        setToyProjectSkills([...toyProjectSkills, ''])
+        setToyProjectSkills([...toyProjectSkills, inputToyProjectSkills])
+    }
+    // 토이프로젝트 스킬 삭제 버튼 클릭 시
+    const onClickDeleteToyProjectSkillsHandler = (index) => {
+        let tmp = [...toyProjectSkills]
+        tmp.splice(index, 1)
+        setToyProjectSkills([...tmp])
     }
     // 만들기 버튼 클릭 시
     const onClickSubmitHandler = () =>{
@@ -130,51 +248,73 @@ function CreateToyProject() {
       setRead(value);
     }
     return (
-        <div>
+        <Container>
             <form>
-                <p>토이프로젝트 명</p>
-                <input placeholder='토이프로젝트명을 입력하세요' value={toyProjectName} onChange={onToyProjectNameHandler} />
-                <p>토이프로젝트 분야</p>
+                <h3>프로젝트 생성</h3>
+                <Title>토이프로젝트 명</Title>
+                <InputName placeholder='토이프로젝트명을 입력하세요' value={toyProjectName} onChange={onToyProjectNameHandler} />
+                <Title>토이프로젝트 분야</Title>
+                <FieldContainer>
                 {fieldList.map((field, index) => (
                     <div>
                         <input type="checkbox" id={index} key={index} onChange={onToyProJectFieldsHandler}/>
                         <label htmlFor={index}>{field.name}</label>
                     </div>
                 ))}
-                <p>대표 이미지</p>
+                </FieldContainer>
+                <Title>대표 이미지</Title>
                 <img src={toyProjectImageUrl} />
                 <input type="file" accept='image/*' onChange={onToyProjectImageHandler} />
-                <p>모집 직무/인원</p>
+                <Title>모집 직무와 인원</Title>
+                <RolesContainer>
+                        <Text>직무</Text>
+                        <InputRole value={inputToyProjectRole.role} onChange={onToyProjectRoleHandler} />
+                        <Text>인원</Text>
+                        <InputRoleNum value={inputToyProjectRole.num} onChange={onToyProjectRoleNumHandler} />
+                        <AddButton type="button" onClick={onClickAddToyProjectRolesHandler}>추가</AddButton>
+                    </RolesContainer>
+                    {toyProjectRoles.length ? <Hr></Hr>:<></>}
                 {toyProjectRoles.map((item, index) => (
-                    <div>
-                        <label>직무</label>
-                        <input id = {index} value={item.role} onChange={onToyProjectRolesHandler} />
-                        <label>인원</label>
-                        <input id = {index} value={item.num} onChange={onToyProjectPeoplesHandler} />
-                    </div>
+                    <RolesContainer>
+                        <Text>직무</Text>
+                        <InputRole as='p'>{item.role}</InputRole>
+                        <Text>인원</Text>
+                        <InputRoleNum as='p'>{item.num}</InputRoleNum>
+                        <DeleteButton type="button" onClick={()=>onClickDeleteToyProjectRolesHandler(index)}>삭제</DeleteButton>
+                    </RolesContainer>
                 ))}
-                <button type="button" onClick={onClickAddToyProjectRolesHandler}>+</button>
-                <p>학교(선택)</p>
-                <label htmlFor="school">학교 사람만 프로젝트에 참여 하도록 하시겠습니까?</label>
+                
+                <Title>학교(선택)</Title>
                 <input type="checkbox" id="school" onChange={onToyProjectSchoolHandler} />
-                <p>토이 프로젝트 설명</p>
+                <label htmlFor="school">학교 사람만 프로젝트에 참여 하도록 하시겠습니까?</label>
+                
+                <Title>토이 프로젝트 설명</Title>
                 <div className="text-editor">
                 <ReactQuill theme="snow"
                             modules={modules}
                             onChange={onChangeMyEdit}>
                 </ReactQuill>
 		</div>    
-                <p>모집 스킬</p>
+                <Title>모집 스킬</Title>
+                <RolesContainer>
+                        <Text>스킬</Text>
+                        <InputRole value={inputToyProjectRole.role} onChange={onToyProjectSkillsHandler} />
+                        <AddButton type="button" onClick={onClickAddToyProjectSkillsHandler}>추가</AddButton>  
+                    </RolesContainer>
+                    {toyProjectSkills.length ? <Hr></Hr>:<></>}
                 {toyProjectSkills.map((item, index) => (
-                    <div>
-                        <label>#</label>
-                        <input id={index} value={item} onChange={onToyProjectSkillsHandler} />
-                    </div>
+                    <RolesContainer>
+                        <Text>스킬</Text>
+                        <InputRole as='p'>{item}</InputRole>
+                        <DeleteButton type="button" onClick={()=>onClickDeleteToyProjectSkillsHandler(index)}>삭제</DeleteButton>
+                    </RolesContainer>
                 ))}
-                <button type="button" onClick={onClickAddToyProjectSkillsHandler}>+</button>
-                <button type="button" onClick={onClickSubmitHandler}>만들기</button>
+                <ButtonContainer>
+                <CancelButton type="button">취소</CancelButton>
+                <CompleteButton type="button" onClick={onClickSubmitHandler}>완료</CompleteButton>
+                </ButtonContainer>
             </form>
-        </div>
+        </Container>
     )
 }
 export default CreateToyProject;
