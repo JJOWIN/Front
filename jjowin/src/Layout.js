@@ -2,7 +2,21 @@ import { Outlet,Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useRecoilValue,useSetRecoilState } from 'recoil';
 import { LoginStatus,TotalId,TotalPw } from './atom';
+import { useState } from 'react';
 
+const TopBanner = styled.div`
+    width:100%;
+    text-align: center;
+    color:white;
+    padding:1.5vh 0 2.5vh 0;
+    background: linear-gradient( to right, rgb(144,214,150),rgb(139,217,197), rgb(95,206,102) );
+    h4{
+        display: inline;
+    }
+    .topBanner{
+        padding:0.3vh;
+    }
+`;
 const Header = styled.header`
     background: white;
     padding:16;
@@ -56,6 +70,7 @@ const Header = styled.header`
 
 const Layout = () => {
   const loginStatus = useRecoilValue(LoginStatus);
+  const [topBanner,setTopBanner] = useState(1);
   const setterLoginStatus=useSetRecoilState(LoginStatus);
   const setterFnId=useSetRecoilState(TotalId);
   const setterFnPw=useSetRecoilState(TotalPw);
@@ -66,6 +81,8 @@ const Layout = () => {
   }
    return (
     <div>
+      {topBanner?
+      <TopBanner><h4>쪼인과 조인하고 공모전 상금 싹쓸이 하자!</h4><h4 className="topBanner" onClick={()=>setTopBanner(0)}> x</h4></TopBanner>:""}
       <Header>
         <div style={{width:"20%",marginTop:0}}>
            <Link to="/">
