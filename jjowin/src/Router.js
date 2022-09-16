@@ -7,7 +7,7 @@ import ContestList from "./routes/Contest/ContestList";
 import ContestProjectNow from "./routes/Contest/ContestProjectNow";
 import ContestDetail from "./routes/Contest/ContestDetail";
 
-import ToyProject from "./routes/ToyProject/ToyProjectList";
+import ToyProjectList from "./routes/ToyProject/ToyProjectList";
 import ToyProjectDetail from "./routes/ToyProject/ToyProjectDetail";
 import CreateToyProject from "./routes/ToyProject/CreateToyProject";
 
@@ -31,7 +31,7 @@ function Router(){
         <Routes>
             <Route element={<Layout />}>
                 <Route path="/" element={<Main/>}></Route>
-                <Route path="/toyprojectList" element={<ToyProject/>}></Route>
+                <Route path="/toyprojectList" element={<ToyProjectList/>}></Route>
                 <Route path="/login" element={<Login/>}></Route>
                 <Route path="/signUp" element={<SignUp/>}></Route>
                 <Route path="/search" element={<Search/>}></Route>
