@@ -151,6 +151,7 @@ const FooterToyProject = styled.div`
 const Layout = () => {
   const loginStatus = useRecoilValue(LoginStatus);
   const [topBanner,setTopBanner] = useState(1);
+  const [status,setStatus]=useState(0);
   const setterLoginStatus=useSetRecoilState(LoginStatus);
   const setterUniversityStatus=useSetRecoilState(University);
   const setterFnId=useSetRecoilState(TotalId);
@@ -170,14 +171,22 @@ const Layout = () => {
         <TopBanner><h4>쪼인과 조인하고 공모전 상금 싹쓸이 하자!</h4><h4 className="topBanner" onClick={()=>setTopBanner(0)}> x</h4></TopBanner>:""}
         <Header>
             <Head>
-                <Logo onClick={()=>navigate("/")}><img style={{width:"100%",height:"100%",objectFit:"fill"}} src="https://user-images.githubusercontent.com/44117975/190598663-aeef7c10-ca05-4850-b20e-dcf66ccbeb88.PNG" alt="jjowinLogo"></img></Logo>
-                <Contest onClick={()=>navigate("/contestList")}><h4>공모전</h4></Contest>
-                <ToyProject onClick={()=>navigate("/toyprojectList")}><h4>토이프로젝트</h4></ToyProject>
+                <Logo onClick={()=>{navigate("/");setStatus(0)}}><img style={{width:"100%",height:"100%",objectFit:"fill"}} src="https://user-images.githubusercontent.com/44117975/190598663-aeef7c10-ca05-4850-b20e-dcf66ccbeb88.PNG" alt="jjowinLogo"></img></Logo>
+                {status===1?
+                <Contest style={{borderBottom:"0.5vh solid rgb(95,206,102)"}} onClick={()=>{navigate("/contestList"); setStatus(1)} }><h4>공모전</h4></Contest>:
+                <Contest onClick={()=>{navigate("/contestList"); setStatus(1)}}><h4>공모전</h4></Contest>}
+                {status===2?
+                <ToyProject style={{borderBottom:"0.5vh solid rgb(95,206,102)"}} onClick={()=>{navigate("/toyprojectList"); setStatus(2)}}><h4>토이프로젝트</h4></ToyProject>:
+                <ToyProject onClick={()=>{navigate("/toyprojectList");setStatus(2)}}><h4>토이프로젝트</h4></ToyProject>}
                 <Search><input placeholder="디자인공모전"/><img src="https://cdn-icons-png.flaticon.com/128/2801/2801881.png" alt="searchIcon"/></Search>
-                <Alarm onClick={()=>navigate()}><h4>알림</h4></Alarm>
-                <Mypage onClick={()=>navigate("/myPage/myPageInfoFix")}><h4>마이페이지</h4></Mypage>
+                {status===3?
+                <Alarm style={{borderBottom:"0.5vh solid rgb(95,206,102)"}} onClick={()=>{navigate(''); setStatus(3)}}><h4>알림</h4></Alarm>:
+                <Alarm onClick={()=>{navigate('');setStatus(3)}}><h4>알림</h4></Alarm>}
+                {status===4?
+                <Mypage style={{borderBottom:"0.5vh solid rgb(95,206,102)"}} onClick={()=>{navigate("/myPage/myPageInfoFix"); setStatus(4)}}><h4>마이페이지</h4></Mypage>:
+                <Mypage onClick={()=>{navigate("/myPage/myPageInfoFix"); setStatus(4)}}><h4>마이페이지</h4></Mypage>}
                 {!loginStatus?
-                <Login onClick={()=>navigate("/login")}><h4>로그인</h4></Login>:
+                <Login onClick={()=>{navigate("/login"); setStatus(5)}}><h4>로그인</h4></Login>:
                 <Login onClick={onClickLogOut}><h4>로그아웃</h4></Login>}
             </Head>
         </Header>

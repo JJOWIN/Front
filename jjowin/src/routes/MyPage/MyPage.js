@@ -45,7 +45,7 @@ function MyPage(){
                 <Link to="./myPageInfoFix"><Span style={{backgroundColor:"rgb(242,242,242)"}}><h3>회원정보 수정</h3></Span></Link>:
                 <Link to="./myPageInfoFix"><Span onClick={()=>setMypage(0)}><h3>회원정보 수정</h3></Span></Link>}
                 {mypage===1?
-                <Link to="./myPageSelect"><Span style={{backgroundColor:"rgb(242,242,242)"}}><h3>찜</h3></Span></Link>:
+                <Link to="./myPageSelect"><Span style={{backgroundColor:"rgb(242,242,242)"}}><h3>찜한 목록 보기</h3></Span></Link>:
                 <Link to="./myPageSelect"><Span onClick={()=>setMypage(1)}><h3>찜한 목록 보기</h3></Span></Link>}
                 {mypage===2?
                 <Link to="./myPageJoinProject"><Span style={{backgroundColor:"rgb(242,242,242)"}}><h3>참여한 프로젝트</h3></Span></Link>:
