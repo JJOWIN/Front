@@ -9,15 +9,13 @@ const Container = styled.div`
     height:100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
 `;
 const Container2 = styled.div`
-    width:80%;
+    width:50vw;
+    margin-left:3vw;
     height:70%;
-    border-radius: 3vh;
     margin-bottom: 10vh;
-    border: 1px solid black;
-   
+    margin-top: 2vh;
 `;
 const EmailAgree = styled.div`
     display: flex;
@@ -25,91 +23,190 @@ const EmailAgree = styled.div`
     margin-left:3vw;
 `;
 const ProofSelf = styled(EmailAgree)``;
-const College = styled(EmailAgree)``;
-const Out = styled(EmailAgree)`
-    justify-content: center;
-    margin-right: 3vw;
-`;
 const Submit = styled.div`
+`;
+
+const Profile =styled.div`
+    margin-left:1vw;
+    padding-bottom:3vh;
+    border-bottom: 3px solid rgb(248,242,248);
+`;
+const Profiles = styled.div`
+
+    width:30%;
+    h2{
+        font-size: 0.9vw;
+        font-weight: bold;
+    }
+`;
+const Information = styled.div`
+    width:70%;
+    display:flex;
+    align-items:center;
+`;
+const ProfileImage = styled.div`
+    margin-top:2vh;
+    img{
+        border-radius: 1vw;
+        width:6vw;
+    }
+`;
+const ProfileInfo = styled.div`
+    margin-left: 1vw;
+`;
+const ProfileInfoName = styled.div`
+    display: flex;
+    h3{
+        margin-top:2vh;
+    }
+    h4{
+        margin-left: 0.5vw;
+        color:rgb(62,198,68);
+        background-color: rgb(242,255,248);
+        border-radius: 1vw;
+        margin-top:1.9vh;
+        padding:0.1vw;
+        cursor: pointer;
+        font-size:0.65vw;
+    }
    
 `;
-const Button = styled.button`
-        width:30%;
-        margin-right:3vw;
-        height:4vh;
-        background-color:${(props) => props.color};
-`
-
-function MyPageInfoFix(){
-    const [proof,setProof] = useState(0); 
-    const college = useRecoilValue(University);
-    const [emailAccept,setEmailAccept] = useState(0);
-    const [email,setEmail] = useState("knh6269@gmail.com");
-    const password ='12345';
-
-    const user={
-        college:"충북대학교"
-    }   
-    const onClickSubmit = () =>{
-        alert("변경되었습니다");
-        console.log(emailAccept,proof,college);
+const ProfileText = styled.div`
+    input{
+        width:27vw;
+        height:6vh;
+        border:none;
+        border-radius: 0.7vw;
+        background-color: rgb(242,242,242);
+        padding-left: 1vw;
+        ::placeholder{
+            color:black;
+            font-weight: 600;
+            font-size: 0.65vw;
+        }
     }
-   const emailAgree = () =>{
-        setEmailAccept(1);
-   }
-   const emailDisAgree = () =>{
-        setEmailAccept(0);
-   }    
-   const collegeProof=()=>{
-    console.log("인증합시다");
-   }
+    img{
+        position: absolute;
+        margin-top:2vh;
+        right: 30.5vw;
+        width:0.9vw;
+    }
+`;
+const MyInfo = styled.div`
+
+margin-left:1vw;
+`;
+const MyInfos =styled.div`
+    margin-top:4vh;
+    h2{
+        font-size: 0.9vw;
+        font-weight: bold;
+    }
+`;
+const Email = styled.div`
+    display: flex;
+    margin-left: 0.5vw;
+    .infoTitle{
+        color:darkgray;
+        width:12%;
+    }
+    font-size: 0.75vw;
+`;
+const Role = styled(Email)`
+    h5{
+        margin-left: 0.5vw;
+        color:rgb(62,198,68);
+        background-color: rgb(242,255,248);
+        border-radius: 1vw;
+        padding:0.1vw;
+        font-size:0.55vw;
+        position: absolute;
+        right:25vw;
+        cursor: pointer;
+    }
+`;
+const College = styled(Email)`
+
+    h5{
+        margin-left: 0.5vw;
+        text-align: right;
+        color:rgb(62,198,68);
+        background-color: rgb(242,255,248);
+        border-radius: 1vw;
+        padding:0.1vw;
+        font-size:0.5vw;
+        margin-top:2vh;
+    }
+`;
+const Skill = styled(Email)`
+    h5{
+        margin-left: 0.5vw;
+        color:rgb(62,198,68);
+        background-color: rgb(242,255,248);
+        border-radius: 1vw;
+        padding:0.1vw;
+        font-size:0.55vw;
+        position: absolute;
+        right:25vw;
+        cursor:pointer;
+        }
+`;
+const Button = styled.button`
+    width:20%;
+    margin-left:1.5vw;
+    margin-top:2vh;
+    font-size:0.7vw;
+    font-weight:500;
+    height:4.5vh;
+    border-radius: 0.5vw;
+    background-color: rgb(240,240,240);
+    border:0.1vw solid darkgray;
+  `;
+function MyPageInfoFix(){
+    const Universitys = useRecoilValue(University);
    
     return(
        <Container>
           <Container2>
-            <EmailAgree>
-                <span>이메일 수신 동의 </span>
-                {emailAccept?  
-                <div><button style={{backgroundColor:"skyblue"}}>ON</button><button onClick={emailDisAgree}>Off</button></div>: 
-                <div><button onClick={emailAgree}>ON</button><button style={{backgroundColor:"skyblue"}}>Off</button></div>}
-            </EmailAgree>  
-            <ProofSelf>
-               {proof?
-                    <h3>휴대폰 본인인증 (O)</h3>
-                   :
-                   <div>
-                   <h3>휴대폰 본인인증 (x)</h3>
-                   <button>인증받기</button>
-                  
-                   </div> 
-            }
-            </ProofSelf>
-
-            <College>
-                {college?
-                <div style={{display:"flex"}}>
-                    <h3>인증된 학교 :</h3>
-                    <h3>{college}</h3>
-                </div>:
-                <div>
-                    <div>
-                    <h3>인증된 학교: 없음</h3>
-                    <input placeholder="학교 이메일 입력"></input>
-                    <button onclick={collegeProof}>인증받기</button>
-                    </div>
-                 <input style={{marginTop:"1vh"}}placeholder="인증번호 입력" />
-                </div>
-                }
-            </College>
-            <Out>
-                <button style={{width:"80%", backgroundColor:"orange",height:"4vh"}}>회원탈퇴</button>
-            </Out>
-            <Submit>
-            <a href="/myPage/myPageInfoFix"><Button color="blue" onClick={onClickSubmit}>확인</Button></a>
-                <a href="/myPage/myPageInfoFix"><Button color="red">취소</Button></a>
-            </Submit>
+                <Profile>
+                    <Profiles>
+                        <h2>프로필</h2>
+                    </Profiles>
+                    <Information>
+                        <ProfileImage><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj80V9xpfm3YeaQuSv8zIyIu05u1nR_MQGaA&usqp=CAU" alt="profileimage"></img></ProfileImage>
+                        <ProfileInfo>
+                            <ProfileInfoName>
+                                <h3>김이름</h3>
+                                <h4>수정하기</h4>
+                            </ProfileInfoName>
+                            <ProfileText>
+                                <input placeholder="안녕하세요, 같이 개발할 팀원 모집중입니다 잘 부탁드립니다~!"/>
+                                <img src="https://cdn-icons-png.flaticon.com/128/1250/1250615.png" alt="pencil"/>
+                            </ProfileText>
+                        </ProfileInfo>
+                    </Information>
+                </Profile>
+                <MyInfo>
+                    <MyInfos>
+                        <h2>나의 정보</h2>
+                    </MyInfos>
+                    <Email>
+                        <h4 className="infoTitle">이메일</h4> <h4>jjowin@email.com</h4>
+                    </Email>
+                    <College>
+                    <h4 className="infoTitle">학교인증</h4> {Universitys===0?<><h4>없음</h4><h5 style={{color:"red",marginTop:"2.2vh"}}>미인증</h5></>:<><h4>{Universitys}</h4><h5>인증완료</h5></>}
+                    </College>
+                    <Role>
+                    <h4 className="infoTitle">직무</h4> <h4>프론트 엔드 개발자 </h4><h5>수정하기</h5>
+                    </Role>
+                    <Skill>
+                    <h4 className="infoTitle">숙련도</h4> <h4>97점</h4><h5>수정하기</h5>
+                    </Skill>
+                </MyInfo>
+                <Button>비밀번호 변경</Button>
           </Container2>
        </Container>
     )
 }
 export default MyPageInfoFix;
+ 
