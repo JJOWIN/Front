@@ -44,8 +44,42 @@ const Logo = styled.div`
         color:rgb(95,206,102);
     }
 `;
+// const Contest = styled(Logo)`
+//     width:7%;
+// `;
 const Contest = styled(Logo)`
     width:7%;
+    font-weight: 600;
+    font-size:0.7vw;
+    display: block;
+    h4{margin:0;
+        line-height:9.5vh;
+        text-align: center;
+    }
+    ul {
+        color:black;
+        display:none;
+        width:100px;
+        padding:5px;
+        list-style :none;
+        position: relative;
+        top:-30px;
+        background-color: #e8f8e9;
+        border-radius:10px;
+        opacity: 0.5;
+    }
+    li {
+        margin:5px 0 5px 0;
+        &:hover{
+            color:rgb(95,206,102);
+        }
+    }
+    &:hover{
+        ul {
+            display:block;
+            
+        }
+    }
 `;
 const ToyProject = styled(Logo)`
     width:10%;
@@ -168,7 +202,14 @@ const Layout = () => {
         <Header>
             <Head>
                 <Logo onClick={()=>navigate("/")}><img style={{width:"100%",height:"100%",objectFit:"fill"}} src="https://user-images.githubusercontent.com/44117975/190598663-aeef7c10-ca05-4850-b20e-dcf66ccbeb88.PNG" alt="jjowinLogo"></img></Logo>
-                <Contest onClick={()=>navigate("/contestList")}><h4>공모전</h4></Contest>
+                {/* <Contest onClick={()=>navigate("/contestList")}><h4>공모전</h4></Contest> */}
+                <Contest>
+                    <h4 onClick={()=>navigate("/contestList")}>공모전</h4>
+                    <ul>
+                        <li onClick={()=>navigate("/contestList")}>공모전</li>
+                        <li onClick={()=>navigate("/contestList/contestProjectList")}>공모전 프로젝트</li>
+                    </ul>
+                </Contest>
                 <ToyProject onClick={()=>navigate("/toyprojectList")}><h4>토이프로젝트</h4></ToyProject>
                 <Search><input placeholder="디자인공모전"/><img src="https://cdn-icons-png.flaticon.com/128/2801/2801881.png" alt="searchIcon"/></Search>
                 <Alarm onClick={()=>navigate()}><h4>알림</h4></Alarm>

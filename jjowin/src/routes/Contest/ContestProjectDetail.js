@@ -56,7 +56,7 @@ const Button = styled.button`
     border: 0;
     font-size: 20px;
 `;
-function ContestDetail(){
+function ContestProjectDetail(){
     const TPinfo = {
      toyProjectName:"창업액셀러레이션 한번 나가보실 분~~~!",
      toyProjectField: "개발",
@@ -178,4 +178,4 @@ function ContestDetail(){
     </Container>
    );
  }
-export default ContestDetail;
+export default ContestProjectDetail;

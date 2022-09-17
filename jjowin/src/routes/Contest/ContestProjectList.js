@@ -15,19 +15,8 @@ const Container  = styled.div`
     }
 `;
 const Image = styled.img`
-    width:10vw;
-    height:24vh;
-`;
-const Collection = styled.div`
-    margin-left:200px;
-    margin-top: 8vh;
-    h2{
-        text-align: center;
-    }
-    a{
-        text-decoration: none;
-        color:black;
-    }
+    width:100%;
+    height:70%;
 `;
 const Input = styled.input`
     margin-left: 1vw;
@@ -35,6 +24,14 @@ const Input = styled.input`
     width: 7vw;
     height: 2vh;
 `;
+const Bar = styled.div`
+display:flex;
+justify-content:space-between;
+width:62%;
+margin:auto;
+margin-top:3vh;
+
+`
 const AddContestProject = styled.button`
         border-radius:50%;
         border: 1px solid black;
@@ -48,87 +45,174 @@ const AddContestProject = styled.button`
         right:2vw;
         bottom:2vh;
 `;
+const Select = styled.select`
+    width: 4vw;
+    height: 5vh;
+    border: none;
+    font-size:15px;
+    border-radius: 20px;
+    background-color:#e8f8e9;
+    color:#14b91c;
+    text-align-last: center;
+    text-align: center;
+`;
+const Search = styled.div`
+    width:14%;
+    align-items: center;
+    justify-content: left;
+    display: flex;
+    margin-left: 2vw;
+    input{
+        width:100%;
+        height:5vh;
+        border-radius: 20px;
+        background-color: rgb(248,248,248);
+        border:none;
+        font-size:0.7vw;
+        padding:0 0 0 2vh;
+        ::placeholder{
+            color:darkgray;
+            margin-left: 3vw;
+        }
+    }
+    img{
+        width:1.5vw;
+        position: absolute;
+        right: 19.5vw;
+        cursor:pointer;
+    }
+`;
+const ContentList = styled.div`
+display:flex;
+flex-wrap:wrap;
+// justify-content:space-between;
+width:62%;
+margin:auto;
+margin-top:3vh;
+`
+const Title = styled.p`
+font-size:15px;
+        font-weight:1000;
+        margin:13px 0px 3px 0px;
+` 
+const Date = styled.p`
+font-size:14px;
+        font-weight:500;
+        margin:0px;
+` 
+const Content = styled.div`
+width:23%;
+padding:10px;
+// text-align:center;
+    div{
+        margin-top:10px;
+        display:inline-block;
+        color:#4fcb55;
+        border:solid 1px #4fcb55;
+        border-radius:15px;
+        padding:5px;
+        font-size:13px;
+        // float:left;
+    }
+    a{
+        text-decoration: none;
+        color:black;
+    }
+`;
 function ContestProjectList(){
     const contest =[
-       {
-        contesttNum: 1,
-        src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
-        title: "ㅈㅇ 엑셀러레이션",
-        field:'과학'
-       },
-       {
-        contesttNum: 2,
-        src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
-        title: "ㅋㄹㅋ 엑셀러레이션",
-        field:'과학'
-       },
-       {
-        contesttNum: 3,
-        src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
-        title: "ㄹㅇ 엑셀러레이션",
-        field:'과학'
-       },
-       {
-        contesttNum: 4,
-        src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
-        title: "창업 엑셀러레이션",
-        field:'개발'
-       },
-       {
-        contesttNum: 5,
-        src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
-        title: "창업 엑셀러레이션",
-        field:'개발'
-       },
-       {
-        contesttNum: 6,
-        src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
-        title: "창업 엑셀러레이션",
-        field:'개발'
-       },
-       {
-        contesttNum: 7,
-        src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
-        title: "ㅎㅎ 엑셀러레이션",
-        field:'개발'
-       },
-       {
-        contesttNum: 8,
-        src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
-        title: "ㅋㅋ 엑셀러레이션",
-        field:'개발'
-       },
-       {
-        contesttNum: 9,
-        src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
-        title: "ㅎㅎ 엑셀러레이션",
-        field:'디자인'
-       },
-       {
-        contesttNum: 10,
-        src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
-        title: "ㅈㅈ 엑셀러레이션",
-        field:'디자인'
-       },
-       {
-        contesttNum: 11,
-        src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
-        title: "ㄷㄷ 엑셀러레이션",
-        field:'디자인'
-       },
-       {
-        contesttNum: 12,
-        src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
-        title: "ㄷㄷ 엑셀러레이션",
-        field:'디자인'
-       },
-       {
-        contesttNum: 13,
-        src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
-        title: "ㄷㄷ 엑셀러레이션",
-        field:'디자인'
-       },
-    ]
+        {
+         contesttNum: 1,
+         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
+         title: "과학 엑셀러레이션",
+         field:'과학',
+         state:'모집중',
+        },
+        {
+         contesttNum: 2,
+         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
+         title: "과학 엑셀러레이션",
+         state:'모집중',
+         field:'과학'
+        },
+        {
+         contesttNum: 3,
+         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
+         title: "과학 엑셀러레이션",
+         state:'모집중',
+         field:'과학'
+        },
+        {
+         contesttNum: 4,
+         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
+         title: "개발 엑셀러레이션",
+         state:'모집중',
+         field:'개발'
+        },
+        {
+         contesttNum: 5,
+         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
+         title: "개발 엑셀러레이션",
+         state:'모집중',
+         field:'개발'
+        },
+        {
+         contesttNum: 6,
+         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
+         title: "개발 엑셀러레이션",
+         state:'모집중',
+         field:'개발'
+        },
+        {
+         contesttNum: 7,
+         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
+         title: "개발 엑셀러레이션",
+         state:'모집중',
+         field:'개발'
+        },
+        {
+         contesttNum: 8,
+         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
+         title: "개발 엑셀러레이션",
+         state:'모집중',
+         field:'개발'
+        },
+        {
+         contesttNum: 9,
+         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
+         title: "디자인 엑셀러레이션",
+         state:'모집중',
+         field:'디자인'
+        },
+        {
+         contesttNum: 10,
+         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
+         title: "디자인 엑셀러레이션",
+         state:'모집중',
+         field:'디자인'
+        },
+        {
+         contesttNum: 11,
+         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
+         title: "디자인 엑셀러레이션",
+         state:'모집중',
+         field:'디자인'
+        },
+        {
+         contesttNum: 12,
+         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
+         title: "디자인 엑셀러레이션",
+         state:'모집중',
+         field:'디자인'
+        },
+        {
+         contesttNum: 13,
+         src: "https://image.msscdn.net/mfile_s01/_shopstaff/list.staff_62d74cf0e1bf5.jpg",
+         title: "디자인 엑셀러레이션",
+         state:'모집중',
+         field:'디자인'
+        },
+     ]
     const [key,SetKey] = useState("");
     const [contestList,setContestList] = useState(contest);
     const [fieldValue, setFieldValue] =useState(false);
@@ -159,9 +243,16 @@ function ContestProjectList(){
     const SelectBox = (props) => {
         const handleChange = (e) => {
             setFieldValue(e.target.value);
+            let value = e.target.value 
+            if(value!=="false"){
+                let tmp = contest.filter((e)=>e.field === value)
+                console.log(tmp)
+                setContestList(tmp)
+            }
+            else setContestList(contest)
         };
         return (
-            <select onChange={handleChange} value={fieldValue}>
+            <Select onChange={handleChange} value={fieldValue}>
                 {props.options.map((option) => (
                     <option
                         key={option.value}
@@ -171,39 +262,34 @@ function ContestProjectList(){
                         {option.name}
                     </option>
                 ))}
-            </select>  
+            </Select>  
         );
     };
 
     return(
         <>
         <AddContestProject onClick={()=>navigate("/")}>+</AddContestProject>
-       <Container>
-         <h3>공모전프로젝트</h3>
-       </Container>
-        <div style={{display:"flex",marginLeft:"7vw",marginTop:"3vh"}}>
-        <h5>검색창:</h5>
-        <Input onChange={Change}></Input>
-        <h5>분야</h5>
+        <Bar>
         <SelectBox options={OPTIONS} defaultValue={false}></SelectBox>
-        <button onClick={onClickSearch}>검색</button>
-
-        </div>
-        <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center",textAlign:"center",paddingRight:"4vw"}}>
+        <Search><input placeholder="디자인공모전"/><img src="https://cdn-icons-png.flaticon.com/128/2801/2801881.png" alt="searchIcon"/></Search>
+        {/* <Input onChange={Change}></Input> */}
+        </Bar>
+        <ContentList>
         {
         contestList.map((item)=>{
             const url =`/contestList/contestProjectDetail/${item.contesttNum}`;
             return(
-                <Collection>
-                {}
-                    <a href={url}>
+                <Content>
+                <a href={url}>
                     <Image src={item.src}></Image>
-                    <h2>{item.title}</h2>
+                    <div>{item.state}</div>
+                    <Title>{item.title}</Title>
+                    <Date>22.08.09-22.08.12</Date>
                     </a>
-               </Collection>
+               </Content>
             )
         })}
-        </div>
+        </ContentList>
        </>
     )
 }
