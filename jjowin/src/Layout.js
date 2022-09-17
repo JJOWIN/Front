@@ -1,7 +1,7 @@
 import { Outlet,Link,useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useRecoilValue,useSetRecoilState } from 'recoil';
-import { LoginStatus,TotalId,TotalPw } from './atom';
+import { LoginStatus,TotalId,TotalPw, University } from './atom';
 import { useState } from 'react';
 
 const TopBanner = styled.div`
@@ -152,14 +152,17 @@ const Layout = () => {
   const loginStatus = useRecoilValue(LoginStatus);
   const [topBanner,setTopBanner] = useState(1);
   const setterLoginStatus=useSetRecoilState(LoginStatus);
+  const setterUniversityStatus=useSetRecoilState(University);
   const setterFnId=useSetRecoilState(TotalId);
   const setterFnPw=useSetRecoilState(TotalPw);
   const navigate=useNavigate();
   
   const onClickLogOut=()=>{
     setterLoginStatus(0);
+    setterUniversityStatus(0);
     setterFnId("");
     setterFnPw("");
+    
   }
    return (
     <div>
@@ -193,7 +196,7 @@ const Layout = () => {
                 <FooterMiddle>
                     <h5>사업자등록번호: 364-81-01692 | 대표자: 김강민</h5>
                     <h5>T. 02-2214-4600IF 070-7729-2006</h5>
-                    <h5>E. allforyoung@maycan.co.kr</h5>
+                    <h5>E. jjowin23@gmail.com</h5>
                 </FooterMiddle>
                 <FooterBottom>
                     <h5>®주식회사메이켄 All rights reserved</h5>
