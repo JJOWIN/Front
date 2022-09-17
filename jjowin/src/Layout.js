@@ -63,7 +63,7 @@ const Contest = styled(Logo)`
         padding:5px;
         list-style :none;
         position: relative;
-        top:-30px;
+        top:-10px;
         background-color: #e8f8e9;
         border-radius:10px;
         opacity: 0.5;
@@ -206,9 +206,9 @@ const Layout = () => {
         <Header>
             <Head>
                 <Logo onClick={()=>{navigate("/");setStatus(0)}}><img style={{width:"100%",height:"100%",objectFit:"fill"}} src="https://user-images.githubusercontent.com/44117975/190598663-aeef7c10-ca05-4850-b20e-dcf66ccbeb88.PNG" alt="jjowinLogo"></img></Logo>
-                {/* {status===1?
-                <Contest style={{borderBottom:"0.5vh solid rgb(95,206,102)"}} onClick={()=>{navigate("/contestList"); setStatus(1)} }><h4>공모전</h4></Contest> */}
-                <Contest>
+                {status===1?
+                // <Contest  onClick={()=>{navigate("/contestList"); setStatus(1)} }><h4>공모전</h4></Contest>
+                <Contest style={{borderBottom:"0.5vh solid rgb(95,206,102)"}} onClick={()=>{ setStatus(1)}}  >
                     <h4 onClick={()=>navigate("/contestList")}>공모전</h4>
                     <ul>
                         <li onClick={()=>navigate("/contestList")}>공모전</li>
