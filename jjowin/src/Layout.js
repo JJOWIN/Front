@@ -45,20 +45,26 @@ const Logo = styled.div`
     }
 `;
 const Contest = styled(Logo)`
+    height:5vh;
     width:7%;
+    margin-top:2vh;
 `;
 const ToyProject = styled(Logo)`
+    height:5vh;
     width:10%;
+    margin-top:2vh;
 `;
 const Search = styled.div`
+margin-top:2vh;
     width:47%;
     align-items: center;
     justify-content: left;
     display: flex;
     margin-left: 2vw;
+    height:5vh;
     input{
         width:70%;
-        height:50%;
+        height:100%;
         border-radius: 1vw;
         background-color: rgb(248,248,248);
         border:none;
@@ -118,10 +124,16 @@ const FooterBottom = styled.div`
 `;
 const FooterLogo = styled.div``;
 const Alarm = styled(Logo)`
+    margin-top:2vh;
+    height:5vh;
     width:7%;`;
 const Mypage = styled(Logo)`
+    margin-top:2vh;
+    height:5vh;
     width:7%;`;
 const Login = styled(Logo)`
+    margin-top:2vh;
+    height:5vh;
     width:7%;`;
 const FooterContest = styled.div`
     display:flex;
