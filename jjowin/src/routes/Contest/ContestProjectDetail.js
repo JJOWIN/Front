@@ -1,181 +1,169 @@
 import {Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Slider from "react-slick";
+import "../../slick.css"
+import "../../slick-theme.css"
 
 const Container = styled.div`
-    margin-left: 15vw;
-    margin-right: 15vw;
-`;
-const Container1 = styled.div`
-    margin-bottom:30px;
-    h3,h4{
-        display: block;
-        border: 1px solid black;
-        padding: 15px;
-        border-radius: 10px;
-        margin-left: 2vw;
-        white-space: pre-wrap;
-    }
-`;  
-const Teamcollect = styled.div`
     display: flex;
-    padding: 1vw;
-    h3.icon{
-        width:30%;
-        margin-left: 4vw;
-        padding-left:10px;
-       
-    }
-    h3.role{
-        width: 29%;
-        text-align: center;
-    }
-    h3.people{
-        width: 33%;
-        text-align: right;
-    }
-    div{
-        width:30%;
-        margin-left: 4vw;
-        padding-left:10px;
+    justify-content: center;
+    align-items: center;
+`;
+const Container2 = styled.div`
+    width:45%;
+    margin-left:6vw;
+`;
+const Contest = styled.div`
+    margin-top:6vh;
+    display: flex;
+    height:40vh;
+    border-bottom: 3px solid rgb(248,242,248);
+`;
+const ContestImg = styled.div`
+    width:30%;
+    max-height:35vh;
+    img{
+        width:100%;
+        height:100%;
     }
 `;
-const Skill = styled.div`
+const ContestInfo = styled.div`
+    margin-left:4vw;
+    h4{
+        display: inline-block;
+        padding:0.1vw;
+        font-size:0.6vw;
+    }
+    .title{
+        color:gray;
+    }
+`;
+const Project = styled.div`
+    margin-top:2vh;
+`;
+const Team = styled.div`
+    border-top: 3px solid rgb(248,242,248);
+    margin-top:5vh;
+`;
+const ContestName = styled.div``;
+const ContestOwner = styled.div``;
+const ContestDate = styled.div``;
+const ContestCategory = styled.div``;
+const Button = styled.button`
+    padding:0.4vw;
+    border-radius: 0.9vw;
+    border:none;
+    color:white;
+    background-color: rgb(20,185,28);
+    margin-top:1vh;
+`;
+const ProjectDetail = styled.div`
+    margin-top: 3vh;
+    font-size:0.6vw;
+`;
+const ProjectLetter = styled.div`
+    height:30vh;
+    overflow:scroll;
+    h4{
+        font-weight: 300;
+    }
+`;
+const TeamDetail= styled.div`
     display: flex;
     h3{
-        border: 1px solid whitesmoke;
-        background-color: whitesmoke;
-        padding: 15px;
-        border-radius: 10px;
-        margin-left: 2vw;
+        font-size:0.6vw;
+        margin:0;
+    }
+     margin-top:3vh;
+     h4{
+        cursor: pointer;
+        position: absolute;
+        right:24.5vw;
+        margin:0;
+        color: rgb(20,185,28);
+     }
+`;
+const TeamSlider = styled.div`
+    margin-top: 3vh;
+    img{
+        width:10.5vw;
+        margin-left:0.5vw;
+    }
+    h3{
+        margin-top:2vh;
+        padding:0.35vw 0.5vw 0.35vw 0.5vw;
+        font-size: 0.6vw;
+        color: rgb(20,185,28);
+        border:1px solid  rgb(20,185,28);
+        display: inline-block;
+        border-radius: 1vw;
+    }
+    h4{
+        width:95%;
+        font-weight: 500;
     }
 `;
-const Button = styled.button`
-    width:8vw;
-    height: 6vh;
-    border-radius: 5px;
-    border: 0;
-    font-size: 20px;
-`;
-function ContestDetail(){
-    const TPinfo = {
-     toyProjectName:"창업액셀러레이션 한번 나가보실 분~~~!",
-     toyProjectField: "개발",
-     toyProjectDay: "2022/10/22",
-     toyProjectDetail:`2022 장애인 인식개선 공모전
-     ■ 공모 주제
-     
-     - 장애인 인식개선의 내용을 담은 순수 창작물
-     
-      
-     ■ 시상 내역
-     
-     - 부문무관
-     
-      * 대상(1) : 보건복지부장관상 / 200만원
-     
-      * 최우수상(2) : 한국장애인재단 이사장상 / 100만원
-     
-     - 영상
-     
-      * 우수상(3) : 신한카드 대표이사상 / 50만원
-     
-      * 입상(5) : 심사위원장상 / 20만원
-     
-     - 라디오캠페인
-     
-      * 우수상(3) : YTN라디오 대표이사상 / 50만원
-     
-      * 입상(5) : 심사위원장상 / 20만원
-     
-     - 포스터
-     
-      * 우수상(3) : 문화일보 대표이사상 / 50만원
-     
-      * 입상(5) : 심사위원장상 / 20만원
-     
-     - 웹툰
-     
-      * 우수상(3) : 트위터코리아 대표이사상 / 50만원
-     
-      * 입상(5) : 심사위원장상 / 20만원
-     
-     `,
-     toyProjectUuniversary: "충북대학교",
-     toyProjectMember:[
-         {
-             icon:"",
-             role:"프론트엔드 개발자",
-             nowPeople:1,
-             maxPeople:3
-         },
-        {
-             icon:"",
-             role:"백엔드 개발자",
-             nowPeople:1,
-             maxPeople:3
-         },
-        {
-             icon:"",
-             role:"데이터 분석가",
-             nowPeople:1,
-             maxPeople:3
-         }
-     ],
-     toyProjectSkill:["javascript","react","mysql","node.js"]
+function ContestProjectDetail(){
+    const settings = {
+        dots: true,  // 점은 안 보이게
+        infinite: true, // 무한으로 즐기게
+        speed: 500,
+        slidesToShow: 4, //4장씩 보이게 해주세요
+        slidesToScroll: 1, //1장씩 넘어가세요
     };
-   const Join=()=>{
-     alert("신청되었습니다");
-   }
-    return (
-    <Container>
-     <Container1>
-        <h2>프로젝트 명</h2>
-        <h3>{TPinfo.toyProjectName}</h3> 
-     </Container1>
-     <Container1>
-        <h2>프로젝트 분야</h2>
-        <h3>{TPinfo.toyProjectField}</h3> 
-     </Container1>
-     <Container1>
-        <h2>프로젝트 기간</h2>
-        <h3>{TPinfo.toyProjectDay}</h3> 
-     </Container1>
-     <Container1>
-        <h2>프로젝트 상세</h2>
-        <h4>{TPinfo.toyProjectDetail}</h4> 
-     </Container1>
-     <h2 style={{marginBottom:"-20px"}}>팀원 모집 현황</h2>
-     <Teamcollect>
-         <h3 className='icon'> </h3>
-         <h3 className='role'>직무</h3>
-         <h3 className='people'>인원</h3>
-     </Teamcollect>
-     
-     {TPinfo.toyProjectMember.map((item)=>{
-         return(
-             <Teamcollect>
-                 <div className='icon'>
-                     <div style={{width:"100px",height:"100px",backgroundColor:"darkgray",borderRadius:"50%"}}>  </div>
-                 </div>
-                 <h3 className='role'>{item.role}</h3>
-                 <h3 className='people'>{item.nowPeople}/{item.maxPeople}</h3>
-             </Teamcollect>
-         )
-     })}
-      <Container1>
-         <h2>모집 스킬</h2>
-         <Skill>
-         {TPinfo.toyProjectSkill.map((item)=>{
-             return(
-                 <h3>#{item}</h3>
-             );
-         })}
-         </Skill>
-      </Container1>
-      <Container1 style={{marginTop:"40px",textAlign:"center"}}>
-      <a href="../toyProjectList"><Button onClick={Join}>참여신청</Button></a>
-      </Container1>
-    </Container>
-   );
- }
-export default ContestDetail;
+
+    return(
+        <Container>
+           <Container2>
+                <Contest>
+                    <ContestImg>
+                        <img src="https://www.thinkcontest.com/ufiles/contest/bc33eeb9f7a55470ec0e75f810358c337784a52f.jpg" alt="contestImg"/>
+                    </ContestImg>
+                    <ContestInfo>
+                        <ContestName>
+                            <h2>2022 기업멤버십 SW캠프 채용 확정형 교육생 모집</h2>
+                        </ContestName>
+                        <ContestOwner>
+                            <h4 className='title'>주최</h4> <h4>청년재단</h4>
+                        </ContestOwner>
+                        <ContestDate>
+                            <h4 className='title'>기간</h4> <h4>2022.09.19~2022.09.21</h4>
+                        </ContestDate>
+                        <ContestCategory>
+                            <h4 className='title'>분야</h4> <h4>교육/강연/멘토링</h4>
+                        </ContestCategory>
+                        <Button>홈페이지 바로가기</Button>
+                        
+                    </ContestInfo>
+                </Contest>
+                <Project>
+                    <ProjectDetail>
+                        <h3>상세내용</h3>
+                    </ProjectDetail>
+                    <ProjectLetter>
+                        <h4>공모전 대한 설명이 적혀있습니다.</h4>
+                    </ProjectLetter>
+                </Project>
+                <Team>
+                    <TeamDetail>
+                        <h3>팀원 모집</h3> <h4>더보기</h4>
+                    </TeamDetail>
+                    <TeamSlider>
+                        <Slider {...settings}>
+                         {[1,1,1,1,1,1].map((item,index)=>{
+                            return(
+                                <div>
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj80V9xpfm3YeaQuSv8zIyIu05u1nR_MQGaA&usqp=CAU" alt="team"/>
+                                    <h3>팀원 모집중</h3>
+                                    <h4>같이 진행하실 개발자 구합니다~! 현재 2명 있어요~</h4>
+                                </div>
+                            )
+                         })}
+                        </Slider>
+                    </TeamSlider>
+                </Team>
+           </Container2>
+        </Container>
+    )
+}
+export default ContestProjectDetail;
