@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useMutation } from "react-query";
 import { useState } from "react";
 import { postLogin } from '../../api.js'
-import { isLoginedAtom, TotalId, TotalPw, LoginStatus ,University} from "../../atom.js";
+import { TotalId, TotalPw, LoginStatus ,University} from "../../atom.js";
 import { useSetRecoilState, useRecoilValue } from "recoil";
 
 const Container = styled.div`
@@ -78,7 +78,7 @@ function Login() {
                 setterFnId(id);
                 setterFnPw(password);
                 setterLoginStatus(1);
-                setterUniversity("충북대학교");
+                setterUniversity(data.list[0].schoolName);
                 navigate('/')
             }
         },
