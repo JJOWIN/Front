@@ -7,22 +7,14 @@ import { TotalId, TotalPw, LoginStatus ,University} from "../../atom.js";
 import { useSetRecoilState, useRecoilValue } from "recoil";
 
 const Container = styled.div`
-    width:40%;
-    height:100%;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15vh;
+// display:flex;
+flex-wrap:wrap;
+// justify-content:space-between;
+width:40%;
+margin:auto;
+margin-top:3vh;
 `;
-const Wraps = styled.div`
-    width:30%;
-    height:100vh;
-    background-color: #dee2e6;
-`;
-const HTMLS = styled.div`
-    display:flex;
-    margin-right: -25px;
-`;
+
 const Container1 = styled.div`
     text-align: center;
     justify-content: center;
@@ -49,18 +41,31 @@ const Container3 = styled.div`
     }
 `;
 const Button = styled.button`
-    width:20vw;
+box-sizing: border-box;
+background-color:#14b91c;
+color:#ffffff;
+border:none;
+border-radius: 10px;
+height: 6vh;
+padding:0 7vh 0 7vh;
+margin:3vh 0 1vh 0;
+    width:22vw;
     height: 6vh;
-    border-radius: 5px;
-    border: 0;
     font-size: 20px;
-    background-color: #AD9AEE;
 `;
 const ID = styled.input`
-    width:20vw;
-    height: 4vh;
-    border-radius: 5px;
-    border: 1px solid darkgray;
+background-color:white;
+border-color:#B8B8B8;
+border-radius: 10px;
+height: 6vh;
+width:20vw;
+&:focus{outline-color:#14b91c;
+background-color:white;}
+padding:0 0 0 2vh;
+::placeholder{
+    color:darkgray;
+    margin-left: 3vw;
+}
 `;
 function Login() {
     const [id, setId] = useState('')
@@ -99,33 +104,22 @@ function Login() {
         })
     }
     return (
-        <HTMLS>
-            <Wraps style={{ marginLeft: "-9px" }}>
-            </Wraps>
             <Container>
-                <Container1>
-                    <div style={{ width: "100px", height: "100px", backgroundColor: "#AD9AEE", borderRadius: "50%", margin: 0 }}></div>
-                </Container1>
+                <h3>로그인</h3>
                 <Container1>
                     <ID placeholder="ID" onChange={onIdHandler} value={id} />
                 </Container1>
                 <Container1>
                     <ID placeholder="PW" type='password' onChange={onPasswordHandler} value={password} />
                 </Container1>
-                <Contianer2>
-                    {/* <a href="/"> */}
-                    <Button onClick={onClickLoginHandler}>로그인</Button>
-                    {/* </a> */}
-                </Contianer2>
+                <div style={{ justifyContent: "center", alignItems: "center", display: "flex"}}><Button onClick={onClickLoginHandler}>로그인</Button></div>
                 <Container3>
                     <Link to="../findId">ID 찾기</Link>
                     <Link to="../findPw">PW 찾기</Link>
                     <Link to="../signUp">회원가입</Link>
                 </Container3>
             </Container>
-            <Wraps style={{ marginRight: "-9px" }}>
-            </Wraps>
-        </HTMLS>
+
     )
 }
 export default Login;
