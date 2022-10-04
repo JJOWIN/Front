@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { useRecoilValue,useSetRecoilState } from 'recoil';
 import { LoginStatus,TotalId,TotalPw, University } from './atom';
 import { useState } from 'react';
+import "./index.css"
+
 
 const TopBanner = styled.div`
     width:100%;
@@ -12,6 +14,7 @@ const TopBanner = styled.div`
     background: linear-gradient( to right, rgb(144,214,150),rgb(139,217,197), rgb(95,206,102) );
     h4{
         display: inline;
+        font-size: 0.7vw;
     }
     .topBanner{
         padding:0.3vh;
@@ -43,6 +46,7 @@ const Logo = styled.div`
     &:hover{
         color:rgb(95,206,102);
     }
+    font-family: 'SUIT';
 `;
 // const Contest = styled(Logo)`
 //     width:7%;
@@ -77,7 +81,7 @@ const Contest = styled(Logo)`
             color:rgb(95,206,102);
         }
     }
-    &:hover{
+    &:active{
         ul {
             display:block;
         }

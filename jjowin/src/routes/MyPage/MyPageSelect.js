@@ -84,13 +84,17 @@ function MyPageSelect(){
         {img:"https://www.thinkcontest.com/ufiles/contest/bc33eeb9f7a55470ec0e75f810358c337784a52f.jpg", gather:"모집중",name:"2022 미래 일러스트 국제 디자인 프로젝트",date:"22.08.09-22.08.12"},
         {img:"https://www.thinkcontest.com/ufiles/contest/bc33eeb9f7a55470ec0e75f810358c337784a52f.jpg", gather:"모집중",name:"2022 미래 일러스트 국제 디자인 프로젝트",date:"22.08.09-22.08.12"},
         {img:"https://www.thinkcontest.com/ufiles/contest/bc33eeb9f7a55470ec0e75f810358c337784a52f.jpg", gather:"모집중",name:"2022 미래 일러스트 국제 디자인 프로젝트",date:"22.08.09-22.08.12"},
-    ]
+    ]   
     return(
         <Container>
             <Container2>
                 <Tag>
-                    {status===1? <h4 style={{borderBottom:"0.5vh solid rgb(95,206,102)"}} onClick={()=>setStatus(1)} className="contestSelect">내가 찜한 공모전</h4>:<h4 onClick={()=>setStatus(1)} className="contestSelect">내가 찜한 공모전</h4>}
-                    {status===1? <h4 onClick={()=>setStatus(0)} className="projectSelect">내가 찜한 프로젝트</h4>:<h4 style={{borderBottom:"0.5vh solid rgb(95,206,102)"}} onClick={()=>setStatus(0)} className="projectSelect">내가 찜한 프로젝트</h4>}
+                    {status===1? 
+                    <h4 style={{borderBottom:"0.5vh solid rgb(95,206,102)"}} onClick={()=>setStatus(1)} className="contestSelect">내가 찜한 공모전</h4>:
+                    <h4 onClick={()=>setStatus(1)} className="contestSelect">내가 찜한 공모전</h4>}
+                    {status===1? 
+                    <h4 onClick={()=>setStatus(0)} className="projectSelect">내가 찜한 프로젝트</h4>:
+                    <h4 style={{borderBottom:"0.5vh solid rgb(95,206,102)"}} onClick={()=>setStatus(0)} className="projectSelect">내가 찜한 프로젝트</h4>}
                  
                 </Tag>
                 {status===1?
